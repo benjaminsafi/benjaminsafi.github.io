@@ -46,6 +46,7 @@ text-shadow:0 0 15px #00ff41;
 h2{
 color:#00ff41;
 margin-top:40px;
+text-shadow:0 0 10px #00ff41;
 }
 
 p{
@@ -69,6 +70,7 @@ transition:0.3s;
 background:#00ff41;
 color:black;
 box-shadow:0 0 15px #00ff41;
+transform:scale(1.05);
 }
 
 .skills span{
@@ -83,6 +85,8 @@ transition:0.3s;
 .skills span:hover{
 background:#00ff41;
 color:black;
+box-shadow:0 0 15px #00ff41;
+transform:translateY(-3px);
 }
 
 .typing{
@@ -90,6 +94,51 @@ border-left:3px solid #00ff41;
 display:inline-block;
 padding-left:10px;
 min-height:45px;
+}
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.9s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.glow-line{
+width:120px;
+height:3px;
+background:#00ff41;
+margin:20px auto;
+box-shadow:0 0 15px #00ff41;
+border-radius:10px;
+}
+
+@media (max-width:768px){
+.container{
+margin:30px 15px;
+padding:20px;
+}
+
+h1{
+font-size:28px;
+}
+
+h2{
+font-size:24px;
+}
+
+p{
+font-size:17px;
+line-height:1.8;
+}
+
+.button{
+font-size:16px;
+padding:10px 18px;
+}
 }
 
 </style>
@@ -102,7 +151,9 @@ min-height:45px;
 <div class="container">
 
 <h1 class="typing" id="typing"></h1>
+<div class="glow-line"></div>
 
+<div class="reveal">
 <p>
 سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.
 </p>
@@ -134,14 +185,15 @@ min-height:45px;
 <p>
 خوشحال می‌شویم اگر شما هم به تیم ما بپیوندید و نظریه‌ها و ایده‌های خود را با ما شریک بسازید.
 </p>
+</div>
 
-<a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
+<a class="button reveal" href="https://instagram.com/benjamin_safi._" target="_blank">
 Instagram : @benjamin_safi._
 </a>
 
-<h2>مهارت‌ها</h2>
+<h2 class="reveal">مهارت‌ها</h2>
 
-<div class="skills">
+<div class="skills reveal">
 <span>Cybersecurity</span>
 <span>Linux</span>
 <span>Networking</span>
@@ -149,8 +201,9 @@ Instagram : @benjamin_safi._
 <span>Web Development</span>
 </div>
 
-<h2>پروژه‌ها</h2>
+<h2 class="reveal">پروژه‌ها</h2>
 
+<div class="reveal">
 <p>
 اولین وب‌سایت شخصی که با GitHub Pages ساختم.
 </p>
@@ -158,19 +211,23 @@ Instagram : @benjamin_safi._
 <p>
 پروژه‌های آینده در زمینه Cybersecurity و تکنولوژی.
 </p>
+</div>
 
-<h2>تماس</h2>
+<h2 class="reveal">تماس</h2>
 
+<div class="reveal">
 <p>
 برای همکاری یا اشتراک ایده‌ها در اینستاگرام پیام بگذارید.
 </p>
+</div>
 
-<a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
+<a class="button reveal" href="https://instagram.com/benjamin_safi._" target="_blank">
 پیام در اینستاگرام
 </a>
 
-<h2>پښتو</h2>
+<h2 class="reveal">پښتو</h2>
 
+<div class="reveal">
 <p>
 سلام، زما نوم بنیامین دی او زه د افغانستان د بغلان ولایت څخه یم.
 </p>
@@ -207,6 +264,7 @@ Instagram : @benjamin_safi._
 موږ به خوشحاله شو که زموږ له ټیم سره یو ځای شئ
 او خپلې نظریې له موږ سره شریکې کړئ.
 </p>
+</div>
 
 </div>
 
@@ -215,19 +273,25 @@ Instagram : @benjamin_safi._
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
+function resizeCanvas(){
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+}
+resizeCanvas();
 
 const letters="アァカサタナハマヤャラワ0123456789";
 const fontSize=18;
-const columns=canvas.width/fontSize;
+let columns=Math.floor(canvas.width/fontSize);
+let drops=[];
 
-const drops=[];
-
+function resetDrops(){
+columns=Math.floor(canvas.width/fontSize);
+drops=[];
 for(let x=0;x<columns;x++) drops[x]=1;
+}
+resetDrops();
 
 function draw(){
-
 ctx.fillStyle="rgba(0,0,0,0.04)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
@@ -235,40 +299,51 @@ ctx.fillStyle="#00ff41";
 ctx.font=fontSize+"px monospace";
 
 for(let i=0;i<drops.length;i++){
-
 const text=letters[Math.floor(Math.random()*letters.length)];
-
 ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
 if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
 drops[i]=0;
 
 drops[i]++;
-
 }
-
 }
 
 setInterval(draw,35);
+
+window.addEventListener("resize",()=>{
+resizeCanvas();
+resetDrops();
+});
 
 const text="سلام، نام من بنیامین است";
 let i=0;
 
 function type(){
-
 if(i<text.length){
-
 document.getElementById("typing").innerHTML+=text.charAt(i);
-
 i++;
-
 setTimeout(type,70);
-
 }
-
 }
-
 type();
+
+function revealOnScroll(){
+const reveals=document.querySelectorAll(".reveal");
+
+for(let i=0;i<reveals.length;i++){
+const windowHeight=window.innerHeight;
+const elementTop=reveals[i].getBoundingClientRect().top;
+const elementVisible=100;
+
+if(elementTop < windowHeight - elementVisible){
+reveals[i].classList.add("active");
+}
+}
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 
 </script>
 
