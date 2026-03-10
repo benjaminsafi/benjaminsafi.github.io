@@ -6,18 +6,21 @@
 <title>Benjamin Safi | Cybersecurity</title>
 
 <style>
+*{box-sizing:border-box}
 
 body{
 margin:0;
 direction:rtl;
-font-family:tahoma;
-background:black;
-color:white;
+font-family:tahoma, sans-serif;
+background:#000;
+color:#fff;
 text-align:center;
 overflow-x:hidden;
 }
 
-canvas{
+/* layers */
+
+#matrix{
 position:fixed;
 top:0;
 left:0;
@@ -26,62 +29,64 @@ height:100%;
 z-index:0;
 }
 
-.world{
+#globe{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg");
-background-size:cover;
-opacity:0.05;
 z-index:1;
+pointer-events:none;
+opacity:0.25;
 }
 
-/* LOADING */
+.overlay{
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.3));
+z-index:2;
+pointer-events:none;
+}
+
+/* loading */
 
 #loading{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
+inset:0;
+background:#000;
 color:#00ff41;
 display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
 font-family:monospace;
+font-size:20px;
 z-index:9999;
 }
 
-.blink{
-animation:blink 1s infinite;
-}
-
+.blink{animation:blink 1s infinite}
 @keyframes blink{
 0%{opacity:1}
 50%{opacity:0}
 100%{opacity:1}
 }
 
-/* CONTENT */
+/* content */
 
 .container{
 position:relative;
-z-index:2;
+z-index:3;
 max-width:900px;
 margin:60px auto;
 padding:30px;
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.45);
 border-radius:20px;
 box-shadow:0 0 25px #00ff41;
 }
 
 h1{
 color:#00ff41;
-font-size:42px;
+font-size:40px;
 text-shadow:0 0 15px #00ff41;
 }
 
@@ -131,7 +136,6 @@ transition:all 1s;
 opacity:1;
 transform:translateY(0);
 }
-
 </style>
 </head>
 
@@ -143,9 +147,9 @@ transform:translateY(0);
 <div class="blink">Initializing Cybersecurity Interface...</div>
 </div>
 
-<div class="world"></div>
-
 <canvas id="matrix"></canvas>
+<div id="globe"></div>
+<div class="overlay"></div>
 
 <div class="container">
 
@@ -233,15 +237,17 @@ Instagram : @benjamin_safi._
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 <script>
 
-/* LOADING */
+/* loading */
 
 setTimeout(()=>{
 document.getElementById("loading").style.display="none";
 },2500);
 
-/* MATRIX */
+/* matrix */
 
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
@@ -282,7 +288,37 @@ drops[i]++;
 
 setInterval(draw,35);
 
-/* SCROLL EFFECT */
+/* globe */
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+
+const renderer=new THREE.WebGLRenderer({alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+document.getElementById("globe").appendChild(renderer.domElement);
+
+const geometry=new THREE.SphereGeometry(5,32,32);
+const material=new THREE.MeshBasicMaterial({
+color:0x00ff41,
+wireframe:true
+});
+
+const sphere=new THREE.Mesh(geometry,material);
+scene.add(sphere);
+
+camera.position.z=10;
+
+function animate(){
+requestAnimationFrame(animate);
+sphere.rotation.y+=0.002;
+sphere.rotation.x+=0.0008;
+renderer.render(scene,camera);
+}
+
+animate();
+
+/* reveal */
 
 function reveal(){
 
