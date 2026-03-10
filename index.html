@@ -1,133 +1,62 @@
-<div class="navbar">
-  <a href="#home">خانه</a>
-  <a href="#about">درباره من</a>
-  <a href="#skills">مهارت‌ها</a>
-  <a href="#projects">پروژه‌ها</a>
-  <a href="#contact">تماس</a>
-</div>
+const ctx = canvas.getContext("2d");
 
-<div class="container">
+function resizeCanvas(){
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+}
+resizeCanvas();
 
-  <div class="section hero" id="home">
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const fontSize = 20;
+let columns = Math.floor(canvas.width / fontSize);
+let drops = [];
 
-    <!-- اگر عکس خودت نداری، این لوگو نمایش داده می‌شود -->
-    <div class="logo-circle">BS</div>
+function resetDrops(){
+  columns = Math.floor(canvas.width / fontSize);
+  drops = [];
+  for(let x = 0; x < columns; x++) drops[x] = 1;
+}
+resetDrops();
 
-    <!-- اگر خواستی بعداً عکس خودت بگذاری، این خط را از حالت comment خارج کن
-    <div class="profile-wrap">
-      <img class="profile-img" src="your-image.jpg" alt="Benjamin Safi">
-    </div>
-    -->
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.06)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    <h1 class="typing glitch" id="typing" data-text=""></h1>
+  ctx.fillStyle = "#00ff41";
+  ctx.font = fontSize + "px monospace";
 
-    <p class="subtitle">
-      دانشجو، علاقه‌مند به <span class="highlight">Cybersecurity</span>، تکنولوژی و ساختن آینده بهتر
-    </p>
+  for(let i = 0; i < drops.length; i++){
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-    <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">Instagram : @benjamin_safi._</a>
-    <div class="small-note">برای همکاری و اشتراک ایده‌ها پیام بگذارید</div>
-  </div>
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
 
-  <div class="section" id="about">
-    <h2>درباره من</h2>
-    <p>
-      سلام، اسم من بنیامین است. ۲۶ سال سن دارم و از ولایت بغلان افغانستان هستم.
-    </p>
-    <p>
-      فعلاً در رشته <span class="highlight">Wirtschaftsinformatik</span> تحصیل می‌کنم.
-      من و دوستانم که در رشته‌های مختلف تحصیل می‌کنیم، برای آینده افغانستان در زمینه‌های
-      زیرساخت، تحصیل و کار ایده‌ها و برنامه‌های بزرگی داریم.
-    </p>
-    <p>
-      اگر شما هم ایده یا نظری دارید، می‌توانید به تیم ما بپیوندید.
-      برای پیوستن به تیم ما در اینستاگرام پیام بگذارید.
-    </p>
-  </div>
+    drops[i]++;
+  }
+}
+setInterval(draw, 40);
 
-  <div class="section" id="skills">
-    <h2>مهارت‌ها</h2>
-    <div class="skills-grid">
-      <div class="skill-box">
-        <div class="skill-title">Cybersecurity</div>
-        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
-      </div>
+window.addEventListener("resize", () => {
+  resizeCanvas();
+  resetDrops();
+});
 
-      <div class="skill-box">
-        <div class="skill-title">Linux</div>
-        <div class="bar"><div class="bar-fill" style="width:70%"></div></div>
-      </div>
+const text = "سلام، اسم من بنیامین است";
+let i = 0;
+const typingEl = document.getElementById("typing");
+typingEl.setAttribute("data-text", text);
 
-      <div class="skill-box">
-        <div class="skill-title">Networking</div>
-        <div class="bar"><div class="bar-fill" style="width:72%"></div></div>
-      </div>
+function typeText(){
+  if(i < text.length){
+    typingEl.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText, 85);
+  }
+}
+typeText();
+</script>
 
-      <div class="skill-box">
-        <div class="skill-title">Python</div>
-        <div class="bar"><div class="bar-fill" style="width:55%"></div></div>
-      </div>
-
-      <div class="skill-box">
-        <div class="skill-title">Web Development</div>
-        <div class="bar"><div class="bar-fill" style="width:60%"></div></div>
-      </div>
-
-      <div class="skill-box">
-        <div class="skill-title">AWS / Cloud</div>
-        <div class="bar"><div class="bar-fill" style="width:58%"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" id="projects">
-    <h2>پروژه‌ها</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>اولین وب‌سایت شخصی</h3>
-        <p>اولین سایتی که ساختم و روی GitHub Pages آنلاین کردم.</p>
-      </div>
-
-      <div class="project-card">
-        <h3>پروژه‌های آینده</h3>
-        <p>پروژه‌های مرتبط با Cybersecurity، آموزش و تکنولوژی برای آینده افغانستان.</p>
-      </div>
-
-      <div class="project-card">
-        <h3>توسعه مهارت‌ها</h3>
-        <p>یادگیری مداوم در Linux، شبکه، امنیت سایبری و توسعه وب.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" id="contact">
-    <h2>تماس</h2>
-    <p>
-      اگر شما هم ایده، نظریه یا برنامه‌ای برای آینده دارید، خوشحال می‌شوم با من در ارتباط شوید.
-    </p>
-    <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">پیام در اینستاگرام</a>
-  </div>
-
-  <div class="section">
-    <h2>پښتو</h2>
-    <p>
-      زما نوم بنیامین دی. زه ۲۶ کلن یم او د افغانستان د بغلان ولایت څخه یم.
-    </p>
-    <p>
-      اوس مهال د <span class="highlight">Wirtschaftsinformatik</span> په رشته کې زده کړه کوم
-      او د سایبري امنیت سره ډېره علاقه لرم.
-    </p>
-    <p>
-      که تاسو هم کومه نظریه لرئ، تاسو کولی شئ زموږ له ټیم سره یو ځای شئ.
-      د یو ځای کېدو لپاره زما په انسټاګرام پیغام پرېږدئ.
-    </p>
-  </div>
-
-</div>
-
-<div class="footer">
-  Benjamin Safi | Cybersecurity Journey
-</div>
-
-<script>
-const canvas = document.getElementById("matrix");
+</body>
+</html>
