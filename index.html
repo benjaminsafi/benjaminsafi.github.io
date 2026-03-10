@@ -7,6 +7,10 @@
 
 <style>
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 margin:0;
 direction:rtl;
@@ -14,7 +18,6 @@ font-family:tahoma, sans-serif;
 color:white;
 background:black;
 overflow-x:hidden;
-overflow-y:auto;
 }
 
 canvas{
@@ -38,14 +41,18 @@ border-radius:20px;
 }
 
 h1{
-font-size:42px;
-margin-bottom:25px;
+font-size:40px;
+margin-bottom:20px;
+}
+
+h2{
+color:#00ff41;
+margin-top:40px;
 }
 
 p{
-font-size:24px;
-line-height:2;
-margin-top:18px;
+font-size:20px;
+line-height:1.9;
 }
 
 .highlight{
@@ -53,49 +60,40 @@ color:#00ff41;
 font-weight:bold;
 }
 
-.instagram-link{
+.skills span{
+display:inline-block;
+border:1px solid #00ff41;
+padding:8px 14px;
+margin:6px;
+border-radius:8px;
+font-size:18px;
+}
+
+.instagram{
 display:inline-block;
 margin-top:20px;
+padding:12px 22px;
+border:2px solid #00ff41;
+border-radius:12px;
+text-decoration:none;
 color:#00ff41;
 font-weight:bold;
-text-decoration:none;
-font-size:22px;
-border:2px solid #00ff41;
-padding:12px 20px;
-border-radius:12px;
 transition:0.3s;
 }
 
-.instagram-link:hover{
+.instagram:hover{
 background:#00ff41;
 color:black;
+}
+
+.project{
+margin-top:15px;
+font-size:18px;
 }
 
 hr{
 margin:40px 0;
 border:1px solid #00ff41;
-}
-
-@media (max-width:768px){
-
-.container{
-margin:30px 15px;
-padding:25px 15px;
-}
-
-h1{
-font-size:30px;
-}
-
-p{
-font-size:18px;
-line-height:1.9;
-}
-
-.instagram-link{
-font-size:18px;
-}
-
 }
 
 </style>
@@ -114,46 +112,74 @@ font-size:18px;
 </p>
 
 <p>
-فعلاً در رشته <span class="highlight">Wirtschaftsinformatik</span> تحصیل می‌کنم.
-من و دوستانم که در رشته‌های مختلف تحصیل می‌کنیم،
+فعلاً در رشته <span class="highlight">Wirtschaftsinformatik</span> تحصیل می‌کنم
+و علاقه زیادی به <span class="highlight">Cybersecurity</span> دارم.
+</p>
+
+<p>
+من و دوستانم که در رشته‌های مختلف تحصیل می‌کنیم
 برای آینده افغانستان در زمینه‌های زیرساخت، تحصیل و کار
 ایده‌ها و برنامه‌های بزرگی داریم.
 </p>
 
-<p>
-اگر شما هم ایده یا نظری دارید،
-می‌توانید به تیم ما بپیوندید.
-برای پیوستن به تیم ما در اینستاگرام پیام بگذارید.
-</p>
-
-<a class="instagram-link" href="https://instagram.com/benjamin_safi._" target="_blank">
+<a class="instagram" href="https://instagram.com/benjamin_safi._" target="_blank">
 Instagram : @benjamin_safi._
 </a>
 
 <hr>
 
-<h1>پښتو</h1>
+<h2>Skills</h2>
+
+<div class="skills">
+<span>Linux</span>
+<span>Networking</span>
+<span>Cybersecurity</span>
+<span>Python</span>
+<span>Web Development</span>
+</div>
+
+<hr>
+
+<h2>Projects</h2>
+
+<div class="project">
+اولین وبسایتی که در اینترنت ساختم
+</div>
+
+<div class="project">
+پروژه‌های آینده در زمینه Cybersecurity و آموزش
+</div>
+
+<hr>
+
+<h2>Contact</h2>
+
+<p>
+برای همکاری یا اشتراک ایده‌ها
+در اینستاگرام پیام بگذارید
+</p>
+
+<a class="instagram" href="https://instagram.com/benjamin_safi._" target="_blank">
+Message on Instagram
+</a>
+
+<hr>
+
+<h2>پښتو</h2>
 
 <p>
 زما نوم بنیامین دی. زه ۲۶ کلن یم او د افغانستان د بغلان ولایت څخه یم.
 </p>
 
 <p>
-اوس مهال د <span class="highlight">Wirtschaftsinformatik</span> په رشته کې زده کړه کوم.
-زه او زما ملګري چې په مختلفو رشته‌وو کې زده کړه کوو،
-د افغانستان د راتلونکې لپاره د زیربنا، تعلیم او کار په برخه کې
-لوی پلانونه او نظریات لرو.
+اوس مهال د <span class="highlight">Wirtschaftsinformatik</span> په رشته کې زده کړه کوم
+او د سایبري امنیت سره ډېره علاقه لرم.
 </p>
 
 <p>
 که تاسو هم کومه نظریه لرئ،
 تاسو کولی شئ زموږ له ټیم سره یو ځای شئ.
-د یو ځای کېدو لپاره زما په انسټاګرام پیغام پرېږدئ.
 </p>
-
-<a class="instagram-link" href="https://instagram.com/benjamin_safi._" target="_blank">
-Instagram : @benjamin_safi._
-</a>
 
 </div>
 
@@ -162,26 +188,17 @@ Instagram : @benjamin_safi._
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-function resizeCanvas(){
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
-}
-
-resizeCanvas();
 
 const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const fontSize=30;
+const columns=canvas.width/fontSize;
 
-let columns=Math.floor(canvas.width/fontSize);
-let drops=[];
+const drops=[];
 
-function resetDrops(){
-columns=Math.floor(canvas.width/fontSize);
-drops=[];
-for(let x=0;x<columns;x++) drops[x]=1;
-}
-
-resetDrops();
+for(let x=0;x<columns;x++)
+drops[x]=1;
 
 function draw(){
 
@@ -207,11 +224,6 @@ drops[i]++;
 }
 
 setInterval(draw,40);
-
-window.addEventListener("resize",()=>{
-resizeCanvas();
-resetDrops();
-});
 
 </script>
 
