@@ -1,4 +1,56 @@
-<div class="bar"><div class="bar-fill" style="width:75%"></div></div>
+<div class="navbar">
+  <a href="#home">خانه</a>
+  <a href="#about">درباره من</a>
+  <a href="#skills">مهارت‌ها</a>
+  <a href="#projects">پروژه‌ها</a>
+  <a href="#contact">تماس</a>
+</div>
+
+<div class="container">
+
+  <div class="section hero" id="home">
+
+    <!-- اگر عکس خودت نداری، این لوگو نمایش داده می‌شود -->
+    <div class="logo-circle">BS</div>
+
+    <!-- اگر خواستی بعداً عکس خودت بگذاری، این خط را از حالت comment خارج کن
+    <div class="profile-wrap">
+      <img class="profile-img" src="your-image.jpg" alt="Benjamin Safi">
+    </div>
+    -->
+
+    <h1 class="typing glitch" id="typing" data-text=""></h1>
+
+    <p class="subtitle">
+      دانشجو، علاقه‌مند به <span class="highlight">Cybersecurity</span>، تکنولوژی و ساختن آینده بهتر
+    </p>
+
+    <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">Instagram : @benjamin_safi._</a>
+    <div class="small-note">برای همکاری و اشتراک ایده‌ها پیام بگذارید</div>
+  </div>
+
+  <div class="section" id="about">
+    <h2>درباره من</h2>
+    <p>
+      سلام، اسم من بنیامین است. ۲۶ سال سن دارم و از ولایت بغلان افغانستان هستم.
+    </p>
+    <p>
+      فعلاً در رشته <span class="highlight">Wirtschaftsinformatik</span> تحصیل می‌کنم.
+      من و دوستانم که در رشته‌های مختلف تحصیل می‌کنیم، برای آینده افغانستان در زمینه‌های
+      زیرساخت، تحصیل و کار ایده‌ها و برنامه‌های بزرگی داریم.
+    </p>
+    <p>
+      اگر شما هم ایده یا نظری دارید، می‌توانید به تیم ما بپیوندید.
+      برای پیوستن به تیم ما در اینستاگرام پیام بگذارید.
+    </p>
+  </div>
+
+  <div class="section" id="skills">
+    <h2>مهارت‌ها</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <div class="skill-title">Cybersecurity</div>
+        <div class="bar"><div class="bar-fill" style="width:75%"></div></div>
       </div>
 
       <div class="skill-box">
@@ -79,62 +131,3 @@
 
 <script>
 const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-function resizeCanvas(){
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
-}
-resizeCanvas();
-
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const fontSize = 20;
-let columns = Math.floor(canvas.width / fontSize);
-let drops = [];
-
-function resetDrops(){
-  columns = Math.floor(canvas.width / fontSize);
-  drops = [];
-  for(let x = 0; x < columns; x++) drops[x] = 1;
-}
-resetDrops();
-
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.06)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle = "#00ff41";
-  ctx.font = fontSize + "px monospace";
-
-  for(let i = 0; i < drops.length; i++){
-    const text = letters[Math.floor(Math.random() * letters.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
-      drops[i] = 0;
-    }
-
-    drops[i]++;
-  }
-}
-setInterval(draw, 40);
-
-window.addEventListener("resize", () => {
-  resizeCanvas();
-  resetDrops();
-});
-
-const text = "سلام، اسم من بنیامین است";
-let i = 0;
-function typeText(){
-  if(i < text.length){
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeText, 85);
-  }
-}
-typeText();
-</script>
-
-</body>
-</html>
