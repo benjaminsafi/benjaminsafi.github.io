@@ -6,581 +6,340 @@
 <title>Benjamin Safi | Cybersecurity</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  direction:rtl;
-  font-family:tahoma, sans-serif;
-  background:#000;
-  color:#fff;
-  text-align:center;
-  overflow-x:hidden;
+margin:0;
+direction:rtl;
+font-family:tahoma, sans-serif;
+background:#000;
+color:#fff;
+text-align:center;
+overflow-x:hidden;
 }
 
+/* layers */
+
 #matrix{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
 }
 
 #globe{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  opacity:0.22;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+pointer-events:none;
+opacity:0.25;
 }
 
 .overlay{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.5)),
-    linear-gradient(to bottom, rgba(0,255,65,0.03), transparent 30%, transparent 70%, rgba(0,255,65,0.03));
-  z-index:2;
-  pointer-events:none;
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.3));
+z-index:2;
+pointer-events:none;
 }
 
-.scanline{
-  position:fixed;
-  left:0;
-  width:100%;
-  height:3px;
-  background:#00ff41;
-  box-shadow:0 0 20px #00ff41;
-  z-index:3;
-  opacity:0.45;
-  animation:scan 6s linear infinite;
-  pointer-events:none;
-}
-
-@keyframes scan{
-  0%{top:-10px;}
-  100%{top:100%;}
-}
+/* loading */
 
 #loading{
-  position:fixed;
-  inset:0;
-  background:#000;
-  color:#00ff41;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  font-family:monospace;
-  font-size:20px;
-  z-index:9999;
+position:fixed;
+inset:0;
+background:#000;
+color:#00ff41;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+font-family:monospace;
+font-size:20px;
+z-index:9999;
 }
 
-.blink{
-  animation:blink 1s infinite;
-}
-
+.blink{animation:blink 1s infinite}
 @keyframes blink{
-  0%{opacity:1}
-  50%{opacity:0}
-  100%{opacity:1}
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
 }
+
+/* content */
 
 .container{
-  position:relative;
-  z-index:4;
-  max-width:950px;
-  margin:55px auto;
-  padding:22px;
+position:relative;
+z-index:3;
+max-width:900px;
+margin:60px auto;
+padding:30px;
+background:rgba(0,0,0,0.45);
+border-radius:20px;
+box-shadow:0 0 25px #00ff41;
 }
 
-.hero,
-.section{
-  background:rgba(0,0,0,0.42);
-  border:1px solid rgba(0,255,65,0.28);
-  border-radius:22px;
-  box-shadow:0 0 24px rgba(0,255,65,0.16);
-  margin-bottom:24px;
-}
-
-.hero{
-  padding:34px 22px;
-}
-
-.section{
-  padding:28px 20px;
-}
-
-.logo{
-  width:120px;
-  height:120px;
-  margin:0 auto 18px;
-  border:2px solid #00ff41;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#00ff41;
-  font-size:34px;
-  font-weight:bold;
-  background:rgba(0,0,0,0.35);
-  box-shadow:0 0 25px rgba(0,255,65,0.35);
-  animation:logoPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes logoPulse{
-  0%,100%{transform:scale(1); box-shadow:0 0 20px rgba(0,255,65,0.25);}
-  50%{transform:scale(1.05); box-shadow:0 0 32px rgba(0,255,65,0.5);}
-}
-
-.glitch{
-  position:relative;
-  display:inline-block;
-  color:#00ff41;
-  font-size:42px;
-  text-shadow:0 0 14px #00ff41;
-  margin:8px 0 14px;
-}
-
-.glitch::before,
-.glitch::after{
-  content:attr(data-text);
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-
-.glitch::before{
-  color:#00ffee;
-  transform:translate(-2px,-1px);
-  opacity:0.35;
-}
-
-.glitch::after{
-  color:#8cff8c;
-  transform:translate(2px,1px);
-  opacity:0.22;
-}
-
-.line{
-  width:140px;
-  height:3px;
-  background:#00ff41;
-  margin:16px auto 18px;
-  border-radius:999px;
-  box-shadow:0 0 15px #00ff41;
-}
-
-.terminal{
-  max-width:760px;
-  margin:18px auto 0;
-  background:rgba(0,0,0,0.55);
-  border:1px solid rgba(0,255,65,0.30);
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 0 18px rgba(0,255,65,0.18);
-}
-
-.terminal-top{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 14px;
-  background:rgba(0,255,65,0.10);
-  border-bottom:1px solid rgba(0,255,65,0.22);
-}
-
-.dot{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:#00ff41;
-  box-shadow:0 0 8px #00ff41;
-}
-
-.terminal-title{
-  margin-right:10px;
-  color:#b6ffcb;
-  font-size:14px;
-}
-
-.terminal-body{
-  text-align:right;
-  padding:18px;
-  font-family:monospace;
-  font-size:18px;
-  line-height:2;
-  color:#d7ffe2;
-}
-
-.prompt{
-  color:#00ff41;
-  font-weight:bold;
+h1{
+color:#00ff41;
+font-size:40px;
+text-shadow:0 0 15px #00ff41;
 }
 
 h2{
-  color:#00ff41;
-  margin:0 0 16px;
-  font-size:30px;
-  text-shadow:0 0 10px #00ff41;
+color:#00ff41;
+margin-top:40px;
 }
 
 p{
-  font-size:20px;
-  line-height:1.95;
-  margin:14px 0;
+font-size:20px;
+line-height:1.9;
 }
 
 .button{
-  display:inline-block;
-  margin-top:18px;
-  padding:12px 25px;
-  border:2px solid #00ff41;
-  border-radius:12px;
-  color:#00ff41;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-  box-shadow:0 0 10px rgba(0,255,65,0.15);
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+border:2px solid #00ff41;
+border-radius:10px;
+color:#00ff41;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
 }
 
 .button:hover{
-  background:#00ff41;
-  color:#000;
-  box-shadow:0 0 18px #00ff41;
-  transform:translateY(-2px) scale(1.03);
-}
-
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
+background:#00ff41;
+color:black;
+box-shadow:0 0 15px #00ff41;
 }
 
 .skills span{
-  display:inline-block;
-  border:1px solid #00ff41;
-  padding:9px 14px;
-  border-radius:10px;
-  transition:0.3s;
-  background:rgba(0,0,0,0.28);
-}
-
-.skills span:hover{
-  background:#00ff41;
-  color:#000;
-  box-shadow:0 0 15px #00ff41;
-  transform:translateY(-3px);
+display:inline-block;
+border:1px solid #00ff41;
+padding:8px 12px;
+margin:6px;
+border-radius:8px;
 }
 
 .reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 1s;
+opacity:0;
+transform:translateY(40px);
+transition:all 1s;
 }
 
 .reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.footer{
-  color:#9dffb8;
-  opacity:0.9;
-  font-size:14px;
-  margin:18px 0 6px;
-}
-
-@media (max-width:768px){
-  .container{
-    margin:24px auto;
-    padding:14px;
-  }
-
-  .hero,.section{
-    padding:22px 14px;
-  }
-
-  .glitch{
-    font-size:28px;
-  }
-
-  .terminal-body{
-    font-size:15px;
-    line-height:1.9;
-  }
-
-  h2{
-    font-size:24px;
-  }
-
-  p{
-    font-size:17px;
-    line-height:1.85;
-  }
-
-  .logo{
-    width:88px;
-    height:88px;
-    font-size:26px;
-  }
+opacity:1;
+transform:translateY(0);
 }
 </style>
 </head>
+
 <body>
 
 <div id="loading">
-  <div>Booting system...</div>
-  <div>Accessing Benjamin Safi Network</div>
-  <div class="blink">Initializing Cybersecurity Interface...</div>
+<div>Booting system...</div>
+<div>Accessing Benjamin Safi Network</div>
+<div class="blink">Initializing Cybersecurity Interface...</div>
 </div>
 
 <canvas id="matrix"></canvas>
 <div id="globe"></div>
 <div class="overlay"></div>
-<div class="scanline"></div>
 
 <div class="container">
 
-  <div class="hero reveal">
-    <div class="logo">BS</div>
+<h1>Benjamin Safi</h1>
 
-    <div class="glitch" id="typing" data-text="سلام، نام من بنیامین است"></div>
-    <div class="line"></div>
+<div class="reveal">
 
-    <div class="terminal">
-      <div class="terminal-top">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="terminal-title">benjamin@cybersecurity:~</div>
-      </div>
-      <div class="terminal-body">
-        <div><span class="prompt">$</span> identity --show</div>
-        <div>نام من بنیامین است و از ولایت بغلان افغانستان هستم.</div>
-        <div><span class="prompt">$</span> education --current</div>
-        <div>فعلاً در رشته Wirtschaftsinformatik تحصیل می‌کنم.</div>
-        <div><span class="prompt">$</span> interest --main</div>
-        <div>امنیت اطلاعات و امنیت سایبری</div>
-      </div>
-    </div>
+<p>
+سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.
+</p>
 
-    <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">Instagram : @benjamin_safi._</a>
-  </div>
+<p>
+فعلاً در رشته <b>Wirtschaftsinformatik</b> تحصیل می‌کنم هدف و علاقه زیادی به  اطلاعات و امنیت سایبری دارم.
+</p>
 
-  <div class="section reveal">
-    <h2>درباره من</h2>
+<p>
+به نظر من ما نباید منتظر بمانیم که دولت کشور ما را آباد کند.
+ما باید خودمان حرکت کنیم و به دنیا نشان بدهیم که افغان‌ها فقط تروریست و بی‌سواد نیستند.
+</p>
 
-    <p>
-      سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.
-    </p>
+<p>
+یکی از چیزهایی که مرا بسیار رنج می‌دهد این است که در بسیاری از کشورهای دنیا برای افغان‌ها احترام کافی وجود ندارد
+و پاسپورت افغانستان اعتبار کمی دارد.
+</p>
 
-    <p>
-      فعلاً در رشته <b>Wirtschaftsinformatik</b> تحصیل می‌کنم و علاقه زیادی به اطلاعات و امنیت سایبری دارم.
-    </p>
+<p>
+من و چند تن از دوستانم که در رشته‌های اقتصادی و امنیتی تحصیل می‌کنیم،
+برای آینده وطن‌مان برنامه‌ها و پلان‌های بزرگی داریم؛
+در بخش زیرساخت‌ها، امنیت، مکاتب، کار و مهم‌تر از همه تکنولوژی.
+</p>
 
-    <p>
-      به نظر من ما نباید منتظر بمانیم که دولت کشور ما را آباد کند. ما باید خودمان حرکت کنیم و به دنیا نشان بدهیم که افغان‌ها فقط تروریست و بی‌سواد نیستند.
-    </p>
+<p>
+هدف ما این است که هموطنان ما یک زندگی آسان، امن و با عزت داشته باشند.
+</p>
 
-    <p>
-      یکی از چیزهایی که مرا بسیار رنج می‌دهد این است که در بسیاری از کشورهای دنیا برای افغان‌ها احترام کافی وجود ندارد و پاسپورت افغانستان اعتبار کمی دارد.
-    </p>
+<p>
+خوشحال می‌شویم اگر شما هم به تیم ما بپیوندید و نظریه‌ها و ایده‌های خود را با ما شریک بسازید.
+</p>
 
-    <p>
-      من و چند تن از دوستانم که در رشته‌های اقتصادی و امنیتی تحصیل می‌کنیم، برای آینده وطن‌مان برنامه‌ها و پلان‌های بزرگی داریم؛ در بخش زیرساخت‌ها، امنیت، مکاتب، کار و مهم‌تر از همه تکنولوژی.
-    </p>
+</div>
 
-    <p>
-      هدف ما این است که هموطنان ما یک زندگی آسان، امن و با عزت داشته باشند.
-    </p>
+<a class="button reveal" href="https://instagram.com/benjamin_safi._" target="_blank">
+Instagram : @benjamin_safi._
+</a>
 
-    <p>
-      خوشحال می‌شویم اگر شما هم به تیم ما بپیوندید و نظریه‌ها و ایده‌های خود را با ما شریک بسازید.
-    </p>
-  </div>
+<h2 class="reveal">مهارت‌ها</h2>
 
-  <div class="section reveal">
-    <h2>مهارت‌ها</h2>
-    <div class="skills">
-      <span>Cybersecurity</span>
-      <span>Linux</span>
-      <span>Networking</span>
-      <span>Python</span>
-      <span>Web Development</span>
-      <span>Information Security</span>
-    </div>
-  </div>
+<div class="skills reveal">
+<span>Cybersecurity</span>
+<span>Linux</span>
+<span>Networking</span>
+<span>Python</span>
+<span>Web Development</span>
+</div>
 
-  <div class="section reveal">
-    <h2>تماس</h2>
-    <p>
-      برای همکاری، اشتراک ایده‌ها و پیوستن به تیم ما در اینستاگرام پیام بگذارید.
-    </p>
-    <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">پیام در اینستاگرام</a>
-  </div>
+<h2 class="reveal">تماس</h2>
 
-  <div class="section reveal">
-    <h2>پښتو</h2>
+<p class="reveal">
+برای همکاری یا اشتراک ایده‌ها در اینستاگرام پیام بگذارید.
+</p>
 
-    <p>
-      سلام، زما نوم بنیامین دی او زه د افغانستان د بغلان ولایت څخه یم.
-    </p>
+<a class="button reveal" href="https://instagram.com/benjamin_safi._" target="_blank">
+پیام در اینستاگرام
+</a>
 
-    <p>
-      اوس مهال د <b>Wirtschaftsinformatik</b> په رشته کې زده کړه کوم او د معلوماتي امنیت او سایبري امنیت سره ډېره علاقه لرم.
-    </p>
+<h2 class="reveal">پښتو</h2>
 
-    <p>
-      زما په نظر موږ باید دا انتظار ونه کړو چې دولت به زموږ هېواد جوړ کړي. موږ باید خپله هڅه وکړو او نړۍ ته وښیو چې افغانان یوازې ترهګر او بې سواده نه دي.
-    </p>
+<div class="reveal">
 
-    <p>
-      یو له هغو شیانو څخه چې ما ډېر ځوروي دا دی چې په نړۍ کې د افغانانو پاسپورټ ډېر اعتبار نه لري او ډېر وخت زموږ خلکو ته کافي درناوی نه کېږي.
-    </p>
+<p>
+سلام، زما نوم بنیامین دی او زه د افغانستان د بغلان ولایت څخه یم.
+</p>
 
-    <p>
-      زه او زما څو ملګري چې په اقتصادي او امنیتي رشته‌وو کې زده کړه کوو، د خپل هېواد د راتلونکې لپاره لوی پلانونه لرو، د زیربناوو، امنیت، ښوونځیو، کار او تر ټولو مهم د ټکنالوژۍ په برخه کې.
-    </p>
+<p>
+اوس مهال د <b>Wirtschaftsinformatik</b> په رشته کې زده کړه کوم
+او د معلوماتي امنیت او سایبري امنیت سره ډېره علاقه لرم.
+</p>
 
-    <p>
-      زموږ هدف دا دی چې زموږ د وطن خلک یو اسانه، خوندي او باعزته ژوند ولري.
-    </p>
+<p>
+زما په نظر موږ باید دا انتظار ونه کړو چې دولت به زموږ هېواد جوړ کړي.
+موږ باید خپله هڅه وکړو او نړۍ ته وښیو چې افغانان یوازې ترهګر او بې سواده نه دي.
+</p>
 
-    <p>
-      که تاسو هم کومه نظریه یا مفکوره لرئ، موږ به خوشحاله شو که زموږ له ټیم سره یو ځای شئ او خپلې نظریې له موږ سره شریکې کړئ.
-    </p>
-  </div>
-
-  <div class="footer reveal">
-    Benjamin Safi | Cybersecurity Journey
-  </div>
+</div>
 
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+
 /* loading */
+
 setTimeout(()=>{
-  document.getElementById("loading").style.display="none";
+document.getElementById("loading").style.display="none";
 },2500);
 
 /* matrix */
+
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
 
-function resizeMatrix(){
-  canvas.height=window.innerHeight;
-  canvas.width=window.innerWidth;
-}
-resizeMatrix();
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
 
-const letters="アァカサタナハマヤャラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const letters="01";
 const fontSize=18;
-let columns=Math.floor(canvas.width/fontSize);
-let drops=[];
+const columns=canvas.width/fontSize;
 
-function resetDrops(){
-  columns=Math.floor(canvas.width/fontSize);
-  drops=[];
-  for(let x=0;x<columns;x++) drops[x]=1;
-}
-resetDrops();
+const drops=[];
+
+for(let x=0;x<columns;x++) drops[x]=1;
 
 function draw(){
-  ctx.fillStyle="rgba(0,0,0,0.045)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  ctx.fillStyle="#00ff41";
-  ctx.font=fontSize+"px monospace";
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  for(let i=0;i<drops.length;i++){
-    const text=letters[Math.floor(Math.random()*letters.length)];
-    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
 
-    if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-      drops[i]=0;
-    }
+for(let i=0;i<drops.length;i++){
 
-    drops[i]++;
-  }
+const text=letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+
 }
+
+}
+
 setInterval(draw,35);
 
 /* globe */
+
 const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({alpha:true, antialias:true});
+
+const renderer=new THREE.WebGLRenderer({alpha:true});
 renderer.setSize(window.innerWidth,window.innerHeight);
+
 document.getElementById("globe").appendChild(renderer.domElement);
 
-const sphereGeometry=new THREE.SphereGeometry(5,32,32);
-const sphereMaterial=new THREE.MeshBasicMaterial({
-  color:0x00ff41,
-  wireframe:true
+const geometry=new THREE.SphereGeometry(5,32,32);
+const material=new THREE.MeshBasicMaterial({
+color:0x00ff41,
+wireframe:true
 });
-const sphere=new THREE.Mesh(sphereGeometry,sphereMaterial);
+
+const sphere=new THREE.Mesh(geometry,material);
 scene.add(sphere);
 
-const ringGeometry=new THREE.TorusGeometry(7,0.03,16,100);
-const ringMaterial=new THREE.MeshBasicMaterial({color:0x00ff41});
-const ring=new THREE.Mesh(ringGeometry,ringMaterial);
-ring.rotation.x=1.2;
-scene.add(ring);
-
-camera.position.z=11;
+camera.position.z=10;
 
 function animate(){
-  requestAnimationFrame(animate);
-  sphere.rotation.y+=0.0022;
-  sphere.rotation.x+=0.0008;
-  ring.rotation.z+=0.003;
-  renderer.render(scene,camera);
+requestAnimationFrame(animate);
+sphere.rotation.y+=0.002;
+sphere.rotation.x+=0.0008;
+renderer.render(scene,camera);
 }
+
 animate();
 
-/* typing */
-const typingEl=document.getElementById("typing");
-const fullText="سلام، نام من بنیامین است";
-typingEl.textContent="";
-let index=0;
-
-function typeText(){
-  if(index<fullText.length){
-    typingEl.textContent+=fullText.charAt(index);
-    index++;
-    setTimeout(typeText,70);
-  }
-}
-typeText();
-
 /* reveal */
-function revealOnScroll(){
-  const reveals=document.querySelectorAll(".reveal");
-  for(let i=0;i<reveals.length;i++){
-    const windowHeight=window.innerHeight;
-    const elementTop=reveals[i].getBoundingClientRect().top;
-    if(elementTop < windowHeight-100){
-      reveals[i].classList.add("active");
-    }
-  }
-}
-window.addEventListener("scroll",revealOnScroll);
-revealOnScroll();
 
-/* resize */
-window.addEventListener("resize",()=>{
-  resizeMatrix();
-  resetDrops();
-  camera.aspect=window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth,window.innerHeight);
-});
+function reveal(){
+
+const reveals=document.querySelectorAll(".reveal");
+
+for(let i=0;i<reveals.length;i++){
+
+const windowHeight=window.innerHeight;
+const elementTop=reveals[i].getBoundingClientRect().top;
+
+if(elementTop < windowHeight-100){
+reveals[i].classList.add("active");
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+
 </script>
 
 </body>
