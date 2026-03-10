@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -10,10 +11,11 @@
 body{
 margin:0;
 direction:rtl;
-font-family:tahoma;
+font-family:tahoma, sans-serif;
 color:white;
 background:black;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:auto;
 }
 
 canvas{
@@ -29,16 +31,16 @@ z-index:0;
 position:relative;
 z-index:2;
 max-width:900px;
-margin:120px auto;
+margin:60px auto;
 text-align:center;
 background:rgba(0,0,0,0.25);
-padding:50px;
+padding:40px 25px;
 border-radius:20px;
 }
 
 h1{
-font-size:60px;
-margin-bottom:30px;
+font-size:42px;
+margin-bottom:25px;
 }
 
 p{
@@ -50,6 +52,51 @@ margin-top:18px;
 .highlight{
 color:#00ff41;
 font-weight:bold;
+}
+
+.instagram-link{
+display:inline-block;
+margin-top:20px;
+color:#00ff41;
+font-weight:bold;
+text-decoration:none;
+font-size:22px;
+border:2px solid #00ff41;
+padding:12px 20px;
+border-radius:12px;
+transition:0.3s;
+}
+
+.instagram-link:hover{
+background:#00ff41;
+color:black;
+}
+
+hr{
+margin:40px 0;
+border:1px solid #00ff41;
+}
+
+@media (max-width:768px){
+
+.container{
+margin:30px 15px;
+padding:25px 15px;
+}
+
+h1{
+font-size:30px;
+}
+
+p{
+font-size:18px;
+line-height:1.9;
+}
+
+.instagram-link{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -80,11 +127,11 @@ font-weight:bold;
 برای پیوستن به تیم ما در اینستاگرام پیام بگذارید.
 </p>
 
-<p class="highlight">
-Instagram : Benjamin Safi
-</p>
+<a class="instagram-link" href="https://instagram.com/benjamin_safi._" target="_blank">
+Instagram : @benjamin_safi._
+</a>
 
-<hr style="margin:40px 0;border-color:#00ff41">
+<hr>
 
 <h1>پښتو</h1>
 
@@ -105,9 +152,9 @@ Instagram : Benjamin Safi
 د یو ځای کېدو لپاره زما په انسټاګرام پیغام پرېږدئ.
 </p>
 
-<p class="highlight">
-Instagram : Benjamin Safi
-</p>
+<a class="instagram-link" href="https://instagram.com/benjamin_safi._" target="_blank">
+Instagram : @benjamin_safi._
+</a>
 
 </div>
 
@@ -116,15 +163,26 @@ Instagram : Benjamin Safi
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
+function resizeCanvas(){
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+}
+
+resizeCanvas();
 
 const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const fontSize=30;
-const columns=canvas.width/fontSize;
-const drops=[];
 
+let columns=Math.floor(canvas.width/fontSize);
+let drops=[];
+
+function resetDrops(){
+columns=Math.floor(canvas.width/fontSize);
+drops=[];
 for(let x=0;x<columns;x++) drops[x]=1;
+}
+
+resetDrops();
 
 function draw(){
 
@@ -151,8 +209,12 @@ drops[i]++;
 
 setInterval(draw,40);
 
+window.addEventListener("resize",()=>{
+resizeCanvas();
+resetDrops();
+});
+
 </script>
 
 </body>
 </html>
-
