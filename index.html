@@ -3,60 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benjamin Safi | Cybersecurity</title>
+<title>Benjamin Safi | Cybersecurity | Afghanistan</title>
 
-<meta name="description" content="Benjamin Safi - علاقه‌مند به امنیت سایبری و تکنولوژی">
+<meta name="description" content="Benjamin Safi - علاقه‌مند به امنیت اطلاعات، امنیت سایبری، Wirtschaftsinformatik، تکنولوژی و آینده افغانستان">
+<meta name="keywords" content="Benjamin Safi, Cybersecurity, Afghanistan, Baghlan, Wirtschaftsinformatik, Information Security, Afghan student">
 <meta name="author" content="Benjamin Safi">
 
+<meta property="og:title" content="Benjamin Safi | Cybersecurity">
+<meta property="og:description" content="علاقه‌مند به امنیت اطلاعات، امنیت سایبری، تکنولوژی و آینده افغانستان">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://benjaminsafi.github.io/benjamin-website/">
+<meta property="og:site_name" content="Benjamin Safi">
+
 <style>
+*{box-sizing:border-box}
+
 body{
 margin:0;
-background:black;
-color:white;
-font-family:tahoma;
-text-align:center;
 direction:rtl;
+font-family:tahoma, sans-serif;
+background:#000;
+color:#fff;
+text-align:center;
+overflow-x:hidden;
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:40px;
-background:rgba(0,0,0,0.6);
-border-radius:20px;
-box-shadow:0 0 20px #00ff41;
-}
-
-h1,h2{
-color:#00ff41;
-}
-
-p{
-line-height:1.9;
-font-size:18px;
-}
-
-.button{
-display:inline-block;
-margin-top:20px;
-padding:10px 25px;
-border:2px solid #00ff41;
-border-radius:10px;
-color:#00ff41;
-text-decoration:none;
-}
-
-.button:hover{
-background:#00ff41;
-color:black;
-}
-
-.skills span{
-border:1px solid #00ff41;
-padding:6px 10px;
-margin:4px;
-display:inline-block;
-border-radius:8px;
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
 }
 
 #globe{
@@ -65,64 +43,234 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-z-index:-1;
+z-index:1;
+pointer-events:none;
+opacity:0.25;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.3));
+z-index:2;
+pointer-events:none;
+}
+
+#loading{
+position:fixed;
+inset:0;
+background:#000;
+color:#00ff41;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+font-family:monospace;
+font-size:20px;
+z-index:9999;
+}
+
+.blink{animation:blink 1s infinite}
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+}
+
+.container{
+position:relative;
+z-index:3;
+max-width:900px;
+margin:60px auto;
+padding:30px;
+background:rgba(0,0,0,0.55);
+border-radius:20px;
+box-shadow:0 0 25px #00ff41;
+}
+
+h1{
+color:#00ff41;
+font-size:40px;
+text-shadow:0 0 15px #00ff41;
+}
+
+h2{
+color:#00ff41;
+margin-top:40px;
+}
+
+p{
+font-size:20px;
+line-height:1.9;
+}
+
+.button{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+border:2px solid #00ff41;
+border-radius:10px;
+color:#00ff41;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.button:hover{
+background:#00ff41;
+color:black;
+box-shadow:0 0 15px #00ff41;
+}
+
+.skills span{
+display:inline-block;
+border:1px solid #00ff41;
+padding:8px 12px;
+margin:6px;
+border-radius:8px;
+}
+
+@media (max-width:768px){
+.container{
+margin:25px 14px;
+padding:20px;
+}
+
+h1{
+font-size:28px;
+}
+
+h2{
+font-size:24px;
+}
+
+p{
+font-size:17px;
+line-height:1.8;
+}
+
+.button{
+font-size:16px;
+padding:10px 18px;
+}
 }
 </style>
 </head>
 
 <body>
 
+<div id="loading">
+<div>Booting system...</div>
+<div>Accessing Benjamin Safi Network</div>
+<div class="blink">Initializing Cybersecurity Interface...</div>
+</div>
+
+<canvas id="matrix"></canvas>
 <div id="globe"></div>
+<div class="overlay"></div>
 
 <div class="container">
 
 <h1>Benjamin Safi</h1>
 
 <p>
-سلام، من بنیامین صفی هستم از افغانستان.
-به امنیت سایبری، تکنولوژی و آینده کشورم علاقه دارم.
+سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.
 </p>
 
 <p>
-بزرگترین آرزوی من این است که مردم افغانستان
-به جای اسلحه قلم در دست بگیرند
-و هیچکس شب گرسنه نخوابد.
+فعلاً در رشته <b>Fachinformatik</b> تحصیل می‌کنم و علاقه زیادی به امنیت اطلاعات و امنیت سایبری دارم.
+</p>
+
+<p>
+به نظر من ما نباید منتظر بمانیم که دولت کشور ما را آباد کند.
+ما باید خودمان حرکت کنیم و به دنیا نشان بدهیم که افغان‌ ها تروریست و بی‌سواد نیستند.
+</p>
+
+<p>
+یکی از چیزهایی که مرا بسیار رنج می‌دهد این است که در بسیاری از کشورهای دنیا برای افغان‌ احترام کافی وجود ندارد
+و پاسپورت افغانستان اعتبار خیلی کمی دارد.
+</p>
+
+<p>
+من و چند تن از دوستانم که در رشته‌ های اقتصادی و امنیتی تحصیل می‌کنیم،
+برای آینده وطن‌مان برنامه‌ها و پلان‌ های بزرگی داریم؛
+در بخش زیرساخت‌ ها، امنیت، مکاتب، کار و مهمتر از همه تکنولوژی.
+</p>
+
+<p>
+هدف ما این است که هموطنان ما یک زندگی آسان، امن و با عزت داشته باشند.
+</p>
+
+<p>
+اگر از من بپرسند بزرگترین آرزوی من چیست،
+من نمی‌خواهم بلند منزلها و یا زندگی لوکس و لاکچری داشته باشم.
+فقط می‌خواهم هموطنانم زندگی‌ای داشته باشند که محتاج کشورهای خارجی نباشند،
+بجای اسلحه در دست گرفتن قلم در دست بگیرند
+و شب‌ ها گرسنه نخوابند و مهمتر از همه از ګذشته و تاریخ درس عبرت بګیرن .
+این بزرگترین آرزوی من در زندگی است.
+</p>
+
+<p>
+خوشحال می‌شویم اگر شما هم به تیم ما بپیوندید و نظریه‌ ها و ایده های خود را با ما شریک بسازید.
 </p>
 
 <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
-Instagram
+Instagram : @benjamin_safi._
 </a>
 
 <h2>مهارت‌ها</h2>
 
 <div class="skills">
 <span>Cybersecurity</span>
+<span>Cyber Expert</span>
 <span>Linux</span>
 <span>Networking</span>
 <span>Python</span>
-<span>Cloud</span>
-<span>Database</span>
+<span>Web Development</span>
+<span>Cloud Engineering</span>
+<span>Cloud Computing</span>
+<span>Database Management</span>
+<span>Datenbank Management</span>
+<span>Projekt Management</span>
+<span>System Administration</span>
+<span>Information Security</span>
 </div>
 
-<h2>پروژه‌های امنیت سایبری</h2>
+<h2>تماس</h2>
 
 <p>
-در آینده پروژه‌های امنیت سایبری و تحقیقاتی خود را در این بخش منتشر می‌کنم.
+برای همکاری یا اشتراک ایده‌ها در اینستاگرام پیام بگذارید.
 </p>
 
-<ul>
-<li>Network Security Research</li>
-<li>Cyber Defense Tools</li>
-<li>Open Source Security Projects</li>
-</ul>
+<a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
+پیام در اینستاگرام
+</a>
 
-<h2>English</h2>
+<h2>پښتو</h2>
 
 <p>
-My name is Benjamin Safi from Afghanistan.
-I am interested in Cybersecurity, Technology and the future of my country.
-My biggest dream is that Afghan people use pens instead of weapons
-and no one sleeps hungry at night.
+سلام، زما نوم بنیامین دی او زه د افغانستان د بغلان ولایت څخه یم.
+</p>
+
+<p>
+اوس مهال د <b>Fachinformatik</b> په رشته کې زده کړه کوم
+او د معلوماتي امنیت او سایبري امنیت سره ډېره علاقه لرم.
+</p>
+
+<p>
+زما په نظر موږ باید دا انتظار ونه کړو چې دولت به زموږ هېواد جوړ کړي.
+موږ باید خپله هڅه وکړو او نړۍ ته وښیو چې افغانان ترهګر او بې سواده نه دي.
+</p>
+
+<p>
+که له ما څخه وپوښتل شي چې زما تر ټولو لویه هیله څه ده،
+زه نه غواړم لوړې ودانۍ او یا لوکس ژوند ولرم.
+زما تر ټولو لویه هیله دا ده چې زما هیوادوال داسې ژوند ولري
+چې د نورو هیوادونو محتاج نه وي.
+پر ځای د دې چې وسلې په لاس کې واخلي،
+قلم په لاس کې واخلي
+او هېڅوک د شپې وږی ویده نه شي.
+دا زما د ژوند تر ټولو لویه هیله ده.
 </p>
 
 </div>
@@ -130,45 +278,89 @@ and no one sleeps hungry at night.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+setTimeout(()=>{
+document.getElementById("loading").style.display="none";
+},2500);
 
-const scene = new THREE.Scene();
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-const camera = new THREE.PerspectiveCamera(
+function resizeMatrix(){
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+}
+resizeMatrix();
+
+const letters="01";
+const fontSize=18;
+let columns=Math.floor(canvas.width/fontSize);
+let drops=[];
+
+function resetDrops(){
+columns=Math.floor(canvas.width/fontSize);
+drops=[];
+for(let x=0;x<columns;x++) drops[x]=1;
+}
+resetDrops();
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+const text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]++;
+}
+}
+
+setInterval(draw,35);
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(
 75,
 window.innerWidth/window.innerHeight,
 0.1,
 1000
 );
 
-const renderer = new THREE.WebGLRenderer({alpha:true});
+const renderer=new THREE.WebGLRenderer({alpha:true, antialias:true});
 renderer.setSize(window.innerWidth,window.innerHeight);
-
 document.getElementById("globe").appendChild(renderer.domElement);
 
-const geometry = new THREE.SphereGeometry(5,32,32);
+const geometry=new THREE.SphereGeometry(5,32,32);
+const material=new THREE.MeshBasicMaterial({
+color:0x00ff41,
+wireframe:true
+});
 
-const texture = new THREE.TextureLoader().load(
-"https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg"
-);
-
-const material = new THREE.MeshBasicMaterial({map:texture});
-
-const sphere = new THREE.Mesh(geometry,material);
-
+const sphere=new THREE.Mesh(geometry,material);
 scene.add(sphere);
 
-camera.position.z = 10;
+camera.position.z=10;
 
 function animate(){
 requestAnimationFrame(animate);
-
-sphere.rotation.y += 0.002;
-
+sphere.rotation.y+=0.002;
+sphere.rotation.x+=0.0008;
 renderer.render(scene,camera);
 }
-
 animate();
 
+window.addEventListener("resize",()=>{
+resizeMatrix();
+resetDrops();
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth,window.innerHeight);
+});
 </script>
 
 </body>
