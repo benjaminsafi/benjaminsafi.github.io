@@ -45,14 +45,13 @@ width:100%;
 height:100%;
 z-index:1;
 pointer-events:none;
-opacity:0.40;
+opacity:0.50;
 }
 
 .overlay{
 position:fixed;
 inset:0;
-background:
-radial-gradient(circle at center, rgba(0,255,65,0.10), rgba(0,0,0,0.35));
+background:radial-gradient(circle at center, rgba(0,255,65,0.12), rgba(0,0,0,0.40));
 z-index:2;
 pointer-events:none;
 }
@@ -81,13 +80,13 @@ z-index:9999;
 .container{
 position:relative;
 z-index:3;
-max-width:900px;
+max-width:950px;
 margin:60px auto;
 padding:30px;
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,0.58);
 border-radius:20px;
 box-shadow:0 0 25px #00ff41;
-backdrop-filter:blur(3px);
+backdrop-filter:blur(4px);
 }
 
 h1{
@@ -132,10 +131,81 @@ margin:6px;
 border-radius:8px;
 }
 
+.terminal{
+margin-top:40px;
+text-align:left;
+direction:ltr;
+background:rgba(0,0,0,0.88);
+border:1px solid #00ff41;
+border-radius:14px;
+box-shadow:0 0 18px rgba(0,255,65,0.35);
+overflow:hidden;
+font-family:monospace;
+}
+
+.terminal-header{
+display:flex;
+align-items:center;
+gap:8px;
+padding:12px 16px;
+background:rgba(0,255,65,0.08);
+border-bottom:1px solid rgba(0,255,65,0.2);
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+display:inline-block;
+}
+.dot.red{background:#ff5f56}
+.dot.yellow{background:#ffbd2e}
+.dot.green{background:#27c93f}
+
+.terminal-title{
+color:#9cffb8;
+font-size:14px;
+margin-left:10px;
+}
+
+.terminal-body{
+padding:18px;
+min-height:260px;
+color:#00ff41;
+font-size:15px;
+line-height:1.8;
+white-space:pre-wrap;
+word-break:break-word;
+overflow:auto;
+}
+
+.cursor{
+display:inline-block;
+width:10px;
+height:1em;
+background:#00ff41;
+margin-left:4px;
+animation:cursorBlink 1s steps(1) infinite;
+vertical-align:middle;
+}
+
+@keyframes cursorBlink{
+50%{opacity:0}
+}
+
 @media (max-width:768px){
+#globe{
+opacity:0.28;
+}
+
+.overlay{
+background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.18));
+}
+
 .container{
 margin:25px 14px;
 padding:20px;
+background:rgba(0,0,0,0.48);
 }
 
 h1{
@@ -154,6 +224,11 @@ line-height:1.8;
 .button{
 font-size:16px;
 padding:10px 18px;
+}
+
+.terminal-body{
+font-size:13px;
+min-height:220px;
 }
 }
 </style>
@@ -180,36 +255,36 @@ padding:10px 18px;
 </p>
 
 <p>
-فعلاً در رشته <b>Fachinformatik</b> تحصیل میکنم و علاقه زیادی به اطلاعات و امنیت سایبری دارم.
+فعلاً در رشته <b>Wirtschaftsinformatik</b> تحصیل می‌کنم و علاقه زیادی به امنیت اطلاعات و امنیت سایبری دارم.
 </p>
 
 <p>
-به نظر من ما نباید منتظر بمانیم که دولت کشور ما را آباد کندیا کشور خارجی.
-ما باید خودمان حرکت کنیم و به دنیا نشان بدهیم که افغان‌ها تروریست و بی‌سواد نیستند.
+به نظر من ما نباید منتظر بمانیم که دولت کشور ما را آباد کند.
+ما باید خودمان حرکت کنیم و به دنیا نشان بدهیم که افغان‌ها فقط تروریست و بی‌سواد نیستند.
 </p>
 
 <p>
-یکی از چیزهایی که مرا بسیار رنج می‌دهد این است که در بسیاری از کشورهای دنیا برای افغان‌ احترام کافی وجود ندارد
-و پاسپورت افغانستان اعتبار خیلی کمی دارد.
+یکی از چیزهایی که مرا بسیار رنج می‌دهد این است که در بسیاری از کشورهای دنیا برای افغان‌ها احترام کافی وجود ندارد
+و پاسپورت افغانستان اعتبار کمی دارد.
 </p>
 
 <p>
-من و چند تن از دوستانم که در رشته‌ های اقتصادی و امنیتی تحصیل می‌کنیم،
-برای آینده وطن‌ مان برنامه‌ ها و پلان‌ های بزرگی داریم؛
-در بخش زیرساخت‌ ها، امنیت، مکاتب، کار و مهمتر از همه تکنولوژی.
+من و چند تن از دوستانم که در رشته‌های اقتصادی و امنیتی تحصیل می‌کنیم،
+برای آینده وطن‌مان برنامه‌ها و پلان‌های بزرگی داریم؛
+در بخش زیرساخت‌ها، امنیت، مکاتب، کار و مهم‌تر از همه تکنولوژی.
 </p>
 
 <p>
-هدف من این است که هموطنان ما یک زندگی آسان، امن و با عزت داشته باشند.
+هدف ما این است که هموطنان ما یک زندگی آسان، امن و با عزت داشته باشند.
 </p>
 
 <p>
-اگر از من بپرسند بزرگترین آرزوی من چیست،
-من نمی‌خواهم بلند منزلها و یا زندگی لوکس و لاکچری داشته باشم.
-فقط می‌خواهم هموطنانم زندگی‌ای داشته باشند که محتاج کشورهای دیگر نباشن ،
-بجای اسلحه در دست گرفتن قلم در دست بگیرند
-و شب‌ ها گرسنه نخوابندو مهمتر از همه از ګذشته و تاریخ درس عبرت بګیرن .
-این بزرگترین آرزوی من در زندگی است.
+اگر از من بپرسند بزرگ‌ترین آرزوی من چیست،
+من نمی‌خواهم بلندمنزل‌ها و یا زندگی لاکچری داشته باشم.
+فقط می‌خواهم هموطنانم زندگی‌ای داشته باشند که محتاج کشورهای دیگر نباشند،
+به‌جای اسلحه در دست گرفتن قلم در دست بگیرند
+و شب‌ها گرسنه نخوابند.
+این بزرگ‌ترین آرزوی من در زندگی است.
 </p>
 
 <p>
@@ -255,13 +330,13 @@ Instagram : @benjamin_safi._
 </p>
 
 <p>
-اوس مهال د <b>Fachinformatik</b> په رشته کې زده کړه کوم
+اوس مهال د <b>Wirtschaftsinformatik</b> په رشته کې زده کړه کوم
 او د معلوماتي امنیت او سایبري امنیت سره ډېره علاقه لرم.
 </p>
 
 <p>
 زما په نظر موږ باید دا انتظار ونه کړو چې دولت به زموږ هېواد جوړ کړي.
-موږ باید خپله هڅه وکړو او نړۍ ته وښیو چې افغانان ترهګر او بې سواده نه دي.
+موږ باید خپله هڅه وکړو او نړۍ ته وښیو چې افغانان یوازې ترهګر او بې سواده نه دي.
 </p>
 
 <p>
@@ -274,6 +349,18 @@ Instagram : @benjamin_safi._
 او هېڅوک د شپې وږی ویده نه شي.
 دا زما د ژوند تر ټولو لویه هیله ده.
 </p>
+
+<h2>Cyber Terminal</h2>
+
+<div class="terminal">
+<div class="terminal-header">
+<span class="dot red"></span>
+<span class="dot yellow"></span>
+<span class="dot green"></span>
+<span class="terminal-title">benjamin@cybersec:~</span>
+</div>
+<div class="terminal-body" id="terminalText"></div>
+</div>
 
 </div>
 
@@ -288,47 +375,50 @@ document.getElementById("loading").style.display="none";
 const canvas=document.getElementById("matrix");
 const ctx=canvas.getContext("2d");
 
+let fontSize;
+let columns;
+let drops=[];
+const letters="01010101010101010101010101";
+
 function resizeMatrix(){
 canvas.height=window.innerHeight;
 canvas.width=window.innerWidth;
+
+fontSize = window.innerWidth < 768 ? 24 : 18;
+columns = Math.floor(canvas.width / fontSize);
+
+drops = [];
+for(let x=0; x<columns; x++){
+drops[x] = Math.random() * canvas.height / fontSize;
+}
 }
 resizeMatrix();
 
-const letters="01";
-const fontSize=18;
-let columns=Math.floor(canvas.width/fontSize);
-let drops=[];
-
-function resetDrops(){
-columns=Math.floor(canvas.width/fontSize);
-drops=[];
-for(let x=0;x<columns;x++){
-drops[x]=1;
-}
-}
-resetDrops();
-
 function drawMatrix(){
-ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.045)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle="#00ff41";
-ctx.font=fontSize+"px monospace";
+ctx.fillStyle = "#39ff6a";
+ctx.font = fontSize + "px monospace";
+ctx.shadowColor = "#00ff41";
+ctx.shadowBlur = window.innerWidth < 768 ? 12 : 5;
 
 for(let i=0;i<drops.length;i++){
-const text=letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+const text = letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-drops[i]=0;
-}
-drops[i]++;
-}
+if(drops[i]*fontSize > canvas.height && Math.random() > (window.innerWidth < 768 ? 0.965 : 0.975)){
+drops[i] = 0;
 }
 
-setInterval(drawMatrix,35);
+drops[i] += window.innerWidth < 768 ? 1.15 : 1;
+}
 
-/* Globe */
+ctx.shadowBlur = 0;
+}
+setInterval(drawMatrix, window.innerWidth < 768 ? 22 : 35);
+
+/* Globe scene */
 const scene=new THREE.Scene();
 
 const camera=new THREE.PerspectiveCamera(
@@ -348,25 +438,20 @@ document.getElementById("globe").appendChild(renderer.domElement);
 
 const textureLoader=new THREE.TextureLoader();
 
-const earthTexture=textureLoader.load(
-"https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg"
-);
+/* Earth */
+const earthTexture=textureLoader.load("https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg");
+const cloudTexture=textureLoader.load("https://threejs.org/examples/textures/planets/earth_clouds_1024.png");
 
-const cloudTexture=textureLoader.load(
-"https://threejs.org/examples/textures/planets/earth_clouds_1024.png"
-);
-
-/* Main Earth */
 const earthGeometry=new THREE.SphereGeometry(5,64,64);
 const earthMaterial=new THREE.MeshPhongMaterial({
 map:earthTexture,
-shininess:8
+shininess:10
 });
 const earth=new THREE.Mesh(earthGeometry,earthMaterial);
 scene.add(earth);
 
 /* Clouds */
-const cloudGeometry=new THREE.SphereGeometry(5.06,64,64);
+const cloudGeometry=new THREE.SphereGeometry(5.07,64,64);
 const cloudMaterial=new THREE.MeshPhongMaterial({
 map:cloudTexture,
 transparent:true,
@@ -398,21 +483,187 @@ const greenLight=new THREE.PointLight(0x00ff66,0.8,50);
 greenLight.position.set(-10,-5,8);
 scene.add(greenLight);
 
+/* Cyber points */
+const pointCount=160;
+const pointPositions=[];
+for(let i=0;i<pointCount;i++){
+const phi=Math.acos((Math.random()*2)-1);
+const theta=Math.random()*Math.PI*2;
+const radius=5.6 + Math.random()*0.35;
+
+const x=radius*Math.sin(phi)*Math.cos(theta);
+const y=radius*Math.cos(phi);
+const z=radius*Math.sin(phi)*Math.sin(theta);
+
+pointPositions.push(x,y,z);
+}
+
+const pointGeometry=new THREE.BufferGeometry();
+pointGeometry.setAttribute(
+"position",
+new THREE.Float32BufferAttribute(pointPositions,3)
+);
+
+const pointMaterial=new THREE.PointsMaterial({
+color:0x00ff88,
+size:0.05,
+transparent:true,
+opacity:0.9
+});
+
+const cyberPoints=new THREE.Points(pointGeometry,pointMaterial);
+scene.add(cyberPoints);
+
+/* Cyber lines */
+const attackLines=[];
+function createAttackLine(){
+const startRadius=5.15;
+const endRadius=6.6;
+
+const phi1=Math.acos((Math.random()*2)-1);
+const theta1=Math.random()*Math.PI*2;
+const phi2=Math.acos((Math.random()*2)-1);
+const theta2=Math.random()*Math.PI*2;
+
+const start=new THREE.Vector3(
+startRadius*Math.sin(phi1)*Math.cos(theta1),
+startRadius*Math.cos(phi1),
+startRadius*Math.sin(phi1)*Math.sin(theta1)
+);
+
+const end=new THREE.Vector3(
+endRadius*Math.sin(phi2)*Math.cos(theta2),
+endRadius*Math.cos(phi2),
+endRadius*Math.sin(phi2)*Math.sin(theta2)
+);
+
+const mid=start.clone().add(end).multiplyScalar(0.5);
+mid.normalize().multiplyScalar(7.2);
+
+const curve=new THREE.QuadraticBezierCurve3(start,mid,end);
+const points=curve.getPoints(40);
+
+const geometry=new THREE.BufferGeometry().setFromPoints(points);
+const material=new THREE.LineBasicMaterial({
+color:0x00ff66,
+transparent:true,
+opacity:0
+});
+
+const line=new THREE.Line(geometry,material);
+scene.add(line);
+
+attackLines.push({
+line,
+material,
+life:Math.random()*200,
+speed:0.012 + Math.random()*0.02
+});
+}
+
+for(let i=0;i<18;i++){
+createAttackLine();
+}
+
 camera.position.z=10;
+
+function animateAttackLines(){
+for(let i=0;i<attackLines.length;i++){
+const item=attackLines[i];
+item.life+=item.speed;
+
+let opacity=0;
+if(item.life<1){
+opacity=item.life;
+}else if(item.life<2){
+opacity=1;
+}else if(item.life<3){
+opacity=3-item.life;
+}else{
+item.life=0;
+}
+
+item.material.opacity=opacity*0.7;
+}
+}
 
 function animate(){
 requestAnimationFrame(animate);
+
 earth.rotation.y+=0.0022;
-earth.rotation.x+=0.00025;
-clouds.rotation.y+=0.0028;
+earth.rotation.x+=0.0002;
+clouds.rotation.y+=0.0029;
 glow.rotation.y+=0.0015;
+cyberPoints.rotation.y+=0.0018;
+cyberPoints.rotation.x+=0.0003;
+
+animateAttackLines();
 renderer.render(scene,camera);
 }
 animate();
 
+/* Terminal typing */
+const terminalLines = [
+"benjamin@cybersec:~$ whoami",
+"Benjamin Safi",
+"",
+"benjamin@cybersec:~$ role",
+"Cybersecurity Student | System Integration | Future Defender",
+"",
+"benjamin@cybersec:~$ mission --show",
+"Build knowledge. Protect systems. Support people.",
+"",
+"benjamin@cybersec:~$ vision",
+"Pens instead of weapons",
+"No one sleeps hungry",
+"A stronger Afghanistan through knowledge and technology",
+"",
+"benjamin@cybersec:~$ skills --list",
+"Linux, Networking, Python, Cloud, Security, Web",
+"",
+"benjamin@cybersec:~$ status",
+"Learning... Building... Preparing...",
+"",
+"benjamin@cybersec:~$ connect",
+"Instagram: @benjamin_safi._",
+"",
+"benjamin@cybersec:~$ _"
+];
+
+const terminal = document.getElementById("terminalText");
+let lineIndex = 0;
+let charIndex = 0;
+let displayed = "";
+
+function typeTerminal(){
+if(lineIndex < terminalLines.length){
+const currentLine = terminalLines[lineIndex];
+
+if(charIndex < currentLine.length){
+displayed += currentLine.charAt(charIndex);
+charIndex++;
+} else {
+displayed += "\n";
+lineIndex++;
+charIndex = 0;
+}
+
+terminal.innerHTML = displayed + '<span class="cursor"></span>';
+terminal.scrollTop = terminal.scrollHeight;
+setTimeout(typeTerminal, 45);
+} else {
+setTimeout(()=>{
+lineIndex = 0;
+charIndex = 0;
+displayed = "";
+typeTerminal();
+}, 2500);
+}
+}
+typeTerminal();
+
 window.addEventListener("resize",()=>{
 resizeMatrix();
-resetDrops();
 camera.aspect=window.innerWidth/window.innerHeight;
 camera.updateProjectionMatrix();
 renderer.setSize(window.innerWidth,window.innerHeight);
@@ -421,4 +672,3 @@ renderer.setSize(window.innerWidth,window.innerHeight);
 
 </body>
 </html>
-
