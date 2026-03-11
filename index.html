@@ -37,22 +37,11 @@ height:100%;
 z-index:0;
 }
 
-#globe{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:1;
-pointer-events:none;
-opacity:0.25;
-}
-
 .overlay{
 position:fixed;
 inset:0;
 background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.3));
-z-index:2;
+z-index:1;
 pointer-events:none;
 }
 
@@ -79,11 +68,11 @@ z-index:9999;
 
 .container{
 position:relative;
-z-index:3;
+z-index:2;
 max-width:900px;
 margin:60px auto;
 padding:30px;
-background:rgba(0,0,0,0.45);
+background:rgba(0,0,0,0.55);
 border-radius:20px;
 box-shadow:0 0 25px #00ff41;
 }
@@ -130,17 +119,6 @@ margin:6px;
 border-radius:8px;
 }
 
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:all 1s;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
 @media (max-width:768px){
 .container{
 margin:25px 14px;
@@ -177,14 +155,12 @@ padding:10px 18px;
 </div>
 
 <canvas id="matrix"></canvas>
-<div id="globe"></div>
 <div class="overlay"></div>
 
 <div class="container">
 
 <h1>Benjamin Safi</h1>
 
-<div class="reveal">
 <p>
 سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.
 </p>
@@ -225,15 +201,14 @@ padding:10px 18px;
 <p>
 خوشحال می‌شویم اگر شما هم به تیم ما بپیوندید و نظریه‌ها و ایده‌های خود را با ما شریک بسازید.
 </p>
-</div>
 
-<a class="button reveal" href="https://instagram.com/benjamin_safi._" target="_blank">
+<a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
 Instagram : @benjamin_safi._
 </a>
 
-<h2 class="reveal">مهارت‌ها</h2>
+<h2>مهارت‌ها</h2>
 
-<div class="skills reveal">
+<div class="skills">
 <span>Cybersecurity</span>
 <span>Cyber Expert</span>
 <span>Linux</span>
@@ -249,19 +224,18 @@ Instagram : @benjamin_safi._
 <span>Information Security</span>
 </div>
 
-<h2 class="reveal">تماس</h2>
+<h2>تماس</h2>
 
-<p class="reveal">
+<p>
 برای همکاری یا اشتراک ایده‌ها در اینستاگرام پیام بگذارید.
 </p>
 
-<a class="button reveal" href="https://instagram.com/benjamin_safi._" target="_blank">
+<a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
 پیام در اینستاگرام
 </a>
 
-<h2 class="reveal">پښتو</h2>
+<h2>پښتو</h2>
 
-<div class="reveal">
 <p>
 سلام، زما نوم بنیامین دی او زه د افغانستان د بغلان ولایت څخه یم.
 </p>
@@ -286,11 +260,8 @@ Instagram : @benjamin_safi._
 او هېڅوک د شپې وږی ویده نه شي.
 دا زما د ژوند تر ټولو لویه هیله ده.
 </p>
-</div>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
 setTimeout(()=>{
@@ -329,63 +300,18 @@ for(let i=0;i<drops.length;i++){
 const text=letters[Math.floor(Math.random()*letters.length)];
 ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
 drops[i]=0;
-
+}
 drops[i]++;
 }
 }
 
 setInterval(draw,35);
 
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-
-const renderer=new THREE.WebGLRenderer({alpha:true, antialias:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-
-document.getElementById("globe").appendChild(renderer.domElement);
-
-const geometry=new THREE.SphereGeometry(5,32,32);
-const material=new THREE.MeshBasicMaterial({
-color:0x00ff41,
-wireframe:true
-});
-
-const sphere=new THREE.Mesh(geometry,material);
-scene.add(sphere);
-
-camera.position.z=10;
-
-function animate(){
-requestAnimationFrame(animate);
-sphere.rotation.y+=0.002;
-sphere.rotation.x+=0.0008;
-renderer.render(scene,camera);
-}
-animate();
-
-function reveal(){
-const reveals=document.querySelectorAll(".reveal");
-for(let i=0;i<reveals.length;i++){
-const windowHeight=window.innerHeight;
-const elementTop=reveals[i].getBoundingClientRect().top;
-
-if(elementTop < windowHeight-100){
-reveals[i].classList.add("active");
-}
-}
-}
-
-window.addEventListener("scroll",reveal);
-reveal();
-
 window.addEventListener("resize",()=>{
 resizeMatrix();
 resetDrops();
-camera.aspect=window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth,window.innerHeight);
 });
 </script>
 
