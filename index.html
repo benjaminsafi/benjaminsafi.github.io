@@ -3,30 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benjamin Safi | Cybersecurity | Afghanistan</title>
-
-<meta name="description" content="Benjamin Safi - علاقه‌مند به امنیت اطلاعات، امنیت سایبری، Wirtschaftsinformatik، تکنولوژی و آینده افغانستان">
-<meta name="keywords" content="Benjamin Safi, Cybersecurity, Afghanistan, Baghlan, Wirtschaftsinformatik, Information Security, Afghan student">
-<meta name="author" content="Benjamin Safi">
-
-<meta property="og:title" content="Benjamin Safi | Cybersecurity">
-<meta property="og:description" content="علاقه‌مند به امنیت اطلاعات، امنیت سایبری، تکنولوژی و آینده افغانستان">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://benjaminsafi.github.io/benjamin-website/">
-<meta property="og:site_name" content="Benjamin Safi">
+<title>Benjamin Safi | Cybersecurity</title>
 
 <style>
+
 *{box-sizing:border-box}
 
 body{
 margin:0;
 direction:rtl;
-font-family:tahoma,sans-serif;
+font-family:tahoma;
 background:#000;
 color:#fff;
 text-align:center;
 overflow-x:hidden;
 }
+
+/* MATRIX */
 
 #matrix{
 position:fixed;
@@ -37,6 +30,8 @@ height:100%;
 z-index:0;
 }
 
+/* GLOBE */
+
 #globe{
 position:fixed;
 top:0;
@@ -45,16 +40,20 @@ width:100%;
 height:100%;
 z-index:1;
 pointer-events:none;
-opacity:0.50;
+opacity:0.55;
 }
+
+/* OVERLAY */
 
 .overlay{
 position:fixed;
 inset:0;
-background:radial-gradient(circle at center, rgba(0,255,65,0.12), rgba(0,0,0,0.40));
+background:radial-gradient(circle at center, rgba(0,255,65,0.12), rgba(0,0,0,0.4));
 z-index:2;
 pointer-events:none;
 }
+
+/* LOADING */
 
 #loading{
 position:fixed;
@@ -70,25 +69,20 @@ font-size:20px;
 z-index:9999;
 }
 
-.blink{animation:blink 1s infinite}
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0}
-100%{opacity:1}
-}
+/* CONTAINER (کادر حذف شده) */
 
-/* فقط این قسمت تغییر کرده */
 .container{
 position:relative;
 z-index:3;
-max-width:950px;
+max-width:900px;
 margin:60px auto;
 padding:30px;
 background:transparent;
-border-radius:0;
 box-shadow:none;
-backdrop-filter:none;
+border-radius:0;
 }
+
+/* TEXT */
 
 h1{
 color:#00ff41;
@@ -96,15 +90,10 @@ font-size:40px;
 text-shadow:0 0 15px #00ff41;
 }
 
-h2{
-color:#00ff41;
-margin-top:40px;
-}
-
 p{
 font-size:20px;
 line-height:1.9;
-text-shadow:0 0 6px rgba(0,0,0,0.7);
+text-shadow:0 0 6px rgba(0,0,0,0.8);
 }
 
 .button{
@@ -116,13 +105,6 @@ border-radius:10px;
 color:#00ff41;
 text-decoration:none;
 font-weight:bold;
-transition:0.3s;
-}
-
-.button:hover{
-background:#00ff41;
-color:#000;
-box-shadow:0 0 15px #00ff41;
 }
 
 .skills span{
@@ -133,101 +115,6 @@ margin:6px;
 border-radius:8px;
 }
 
-.terminal{
-margin-top:40px;
-text-align:left;
-direction:ltr;
-background:rgba(0,0,0,0.88);
-border:1px solid #00ff41;
-border-radius:14px;
-box-shadow:0 0 18px rgba(0,255,65,0.35);
-overflow:hidden;
-font-family:monospace;
-}
-
-.terminal-header{
-display:flex;
-align-items:center;
-gap:8px;
-padding:12px 16px;
-background:rgba(0,255,65,0.08);
-border-bottom:1px solid rgba(0,255,65,0.2);
-}
-
-.dot{
-width:12px;
-height:12px;
-border-radius:50%;
-display:inline-block;
-}
-.dot.red{background:#ff5f56}
-.dot.yellow{background:#ffbd2e}
-.dot.green{background:#27c93f}
-
-.terminal-title{
-color:#9cffb8;
-font-size:14px;
-margin-left:10px;
-}
-
-.terminal-body{
-padding:18px;
-min-height:260px;
-color:#00ff41;
-font-size:15px;
-line-height:1.8;
-white-space:pre-wrap;
-word-break:break-word;
-overflow:auto;
-}
-
-.cursor{
-display:inline-block;
-width:10px;
-height:1em;
-background:#00ff41;
-margin-left:4px;
-animation:cursorBlink 1s steps(1) infinite;
-vertical-align:middle;
-}
-
-@keyframes cursorBlink{
-50%{opacity:0}
-}
-
-@media (max-width:768px){
-#globe{
-opacity:0.28;
-}
-
-.overlay{
-background:radial-gradient(circle at center, rgba(0,255,65,0.08), rgba(0,0,0,0.18));
-}
-
-.container{
-margin:25px 14px;
-padding:20px;
-background:transparent;
-}
-
-h1{font-size:28px;}
-h2{font-size:24px;}
-
-p{
-font-size:17px;
-line-height:1.8;
-}
-
-.button{
-font-size:16px;
-padding:10px 18px;
-}
-
-.terminal-body{
-font-size:13px;
-min-height:220px;
-}
-}
 </style>
 </head>
 
@@ -236,7 +123,7 @@ min-height:220px;
 <div id="loading">
 <div>Booting system...</div>
 <div>Accessing Benjamin Safi Network</div>
-<div class="blink">Initializing Cybersecurity Interface...</div>
+<div>Initializing Cybersecurity Interface...</div>
 </div>
 
 <canvas id="matrix"></canvas>
@@ -247,29 +134,19 @@ min-height:220px;
 
 <h1>Benjamin Safi</h1>
 
-<p>سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.</p>
-
-<p>فعلاً در رشته <b>Fachinformatik</b> تحصیل می‌کنم هدف و علاقه زیاد به اطلاعات و امنیت سایبری دارم.</p>
-
 <p>
-به نظر من ما نباید منتظر بمانیم که دولت یا کمک های خارجی کشور ما را آباد کند.
-ما باید خودمان حرکت کنیم و به دنیا نشان بدهیم که افغان‌ها تروریست و بی‌سواد نیستند.
+سلام، نام من بنیامین است و از ولایت بغلان افغانستان هستم.
 </p>
 
 <p>
-یکی از چیزهایی که مرا بسیار رنج می‌دهد این است که در بسیاری از کشورهای دنیا برای افغان احترام کافی وجود ندارد
-و پاسپورت افغانستان اعتبار بسیار کمی دارد.
-</p>
-
-<p>
-هدف من این است که هموطنان ما یک زندگی آسان، امن و با عزت داشته باشند.
+فعلاً در رشته Fachinformatik تحصیل می‌کنم و علاقهٔ زیادی به امنیت سایبری دارم.
 </p>
 
 <a class="button" href="https://instagram.com/benjamin_safi._" target="_blank">
-Instagram : @benjamin_safi._
+Instagram
 </a>
 
-<h2>مهارت‌ها</h2>
+<h2>Skills</h2>
 
 <div class="skills">
 <span>Cybersecurity</span>
@@ -277,21 +154,6 @@ Instagram : @benjamin_safi._
 <span>Networking</span>
 <span>Python</span>
 <span>Web Development</span>
-<span>Cloud</span>
-<span>Database</span>
-<span>System Administration</span>
-</div>
-
-<h2>Cyber Terminal</h2>
-
-<div class="terminal">
-<div class="terminal-header">
-<span class="dot red"></span>
-<span class="dot yellow"></span>
-<span class="dot green"></span>
-<span class="terminal-title">benjamin@cybersec:~</span>
-</div>
-<div class="terminal-body" id="terminalText"></div>
 </div>
 
 </div>
@@ -299,97 +161,106 @@ Instagram : @benjamin_safi._
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+
+/* loading */
+
 setTimeout(()=>{
-document.getElementById("loading").style.display="none";
-},2500);
+document.getElementById("loading").style.display="none"
+},2500)
 
-/* Matrix background */
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
+/* MATRIX */
 
-let fontSize;
-let columns;
-let drops=[];
-const letters="01010101010101010101010101";
+const canvas=document.getElementById("matrix")
+const ctx=canvas.getContext("2d")
 
-function resizeMatrix(){
-canvas.height=window.innerHeight;
-canvas.width=window.innerWidth;
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
 
-fontSize = window.innerWidth < 768 ? 24 : 18;
-columns = Math.floor(canvas.width / fontSize);
+const letters="010101010101"
+const fontSize=18
+const columns=canvas.width/fontSize
 
-drops = [];
-for(let x=0; x<columns; x++){
-drops[x] = Math.random() * canvas.height / fontSize;
-}
-}
-resizeMatrix();
+const drops=[]
 
-function drawMatrix(){
-ctx.fillStyle="rgba(0,0,0,0.045)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+for(let x=0;x<columns;x++)drops[x]=1
 
-ctx.fillStyle="#39ff6a";
-ctx.font=fontSize+"px monospace";
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)"
+ctx.fillRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="#0f0"
+ctx.font=fontSize+"px monospace"
 
 for(let i=0;i<drops.length;i++){
-const text = letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-drops[i] = 0;
+const text=letters[Math.floor(Math.random()*letters.length)]
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0
 }
 
-drops[i]++;
-}
-}
+drops[i]++
 
-setInterval(drawMatrix,35);
-
-/* Terminal typing */
-const terminalLines=[
-"benjamin@cybersec:~$ whoami",
-"Benjamin Safi",
-"",
-"benjamin@cybersec:~$ role",
-"Cybersecurity Student",
-"",
-"benjamin@cybersec:~$ mission",
-"Build knowledge. Protect systems.",
-"",
-"benjamin@cybersec:~$ skills",
-"Linux | Networking | Python | Security",
-"",
-"benjamin@cybersec:~$ _"
-];
-
-const terminal=document.getElementById("terminalText");
-
-let lineIndex=0;
-let charIndex=0;
-let displayed="";
-
-function typeTerminal(){
-if(lineIndex<terminalLines.length){
-
-const line=terminalLines[lineIndex];
-
-if(charIndex<line.length){
-displayed+=line.charAt(charIndex);
-charIndex++;
-}else{
-displayed+="\n";
-lineIndex++;
-charIndex=0;
 }
 
-terminal.innerHTML=displayed+'<span class="cursor"></span>';
-setTimeout(typeTerminal,45);
-}
 }
 
-typeTerminal();
+setInterval(draw,33)
+
+/* GLOBE */
+
+const scene=new THREE.Scene()
+
+const camera=new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+)
+
+const renderer=new THREE.WebGLRenderer({alpha:true})
+
+renderer.setSize(window.innerWidth,window.innerHeight)
+
+document.getElementById("globe").appendChild(renderer.domElement)
+
+const textureLoader=new THREE.TextureLoader()
+
+const earthTexture=textureLoader.load(
+"https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg"
+)
+
+const geometry=new THREE.SphereGeometry(5,64,64)
+
+const material=new THREE.MeshPhongMaterial({map:earthTexture})
+
+const earth=new THREE.Mesh(geometry,material)
+
+scene.add(earth)
+
+const light=new THREE.DirectionalLight(0xffffff,1)
+
+light.position.set(5,3,5)
+
+scene.add(light)
+
+camera.position.z=10
+
+function animate(){
+
+requestAnimationFrame(animate)
+
+earth.rotation.y+=0.002
+
+renderer.render(scene,camera)
+
+}
+
+animate()
+
 </script>
 
 </body>
