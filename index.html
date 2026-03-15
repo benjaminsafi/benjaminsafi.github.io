@@ -367,9 +367,307 @@ Instagram : @benjamin_safi._
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+setTimeout(()=>{
+document.getElementById("loading").style.display="none";
+},2500);
 
-/* همان اسکریپت قبلی بدون هیچ تغییر */
+/* Matrix background */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
+let fontSize;
+let columns;
+let drops=[];
+const letters="01010101010101010101010101";
+
+function resizeMatrix(){
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+
+fontSize = window.innerWidth < 768 ? 24 : 18;
+columns = Math.floor(canvas.width / fontSize);
+
+drops = [];
+for(let x=0; x<columns; x++){
+drops[x] = Math.random() * canvas.height / fontSize;
+}
+}
+resizeMatrix();
+
+function drawMatrix(){
+ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.045)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#39ff6a";
+ctx.font = fontSize + "px monospace";
+ctx.shadowColor = "#00ff41";
+ctx.shadowBlur = window.innerWidth < 768 ? 12 : 5;
+
+for(let i=0;i<drops.length;i++){
+const text = letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > (window.innerWidth < 768 ? 0.965 : 0.975)){
+drops[i] = 0;
+}
+
+drops[i] += window.innerWidth < 768 ? 1.15 : 1;
+}
+
+ctx.shadowBlur = 0;
+}
+setInterval(drawMatrix, window.innerWidth < 768 ? 22 : 35);
+
+/* Globe scene */
+const scene=new THREE.Scene();
+
+const camera=new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
+
+const renderer=new THREE.WebGLRenderer({
+alpha:true,
+antialias:true
+});
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+document.getElementById("globe").appendChild(renderer.domElement);
+
+const textureLoader=new THREE.TextureLoader();
+
+/* Earth */
+const earthTexture=textureLoader.load("https://threejs.org/examples/textures/land_ocean_ice_cloud_2048.jpg");
+const cloudTexture=textureLoader.load("https://threejs.org/examples/textures/planets/earth_clouds_1024.png");
+
+const earthGeometry=new THREE.SphereGeometry(5,64,64);
+const earthMaterial=new THREE.MeshPhongMaterial({
+map:earthTexture,
+shininess:10
+});
+const earth=new THREE.Mesh(earthGeometry,earthMaterial);
+scene.add(earth);
+
+/* Clouds */
+const cloudGeometry=new THREE.SphereGeometry(5.07,64,64);
+const cloudMaterial=new THREE.MeshPhongMaterial({
+map:cloudTexture,
+transparent:true,
+opacity:0.35,
+depthWrite:false
+});
+const clouds=new THREE.Mesh(cloudGeometry,cloudMaterial);
+scene.add(clouds);
+
+/* Glow */
+const glowGeometry=new THREE.SphereGeometry(5.22,64,64);
+const glowMaterial=new THREE.MeshBasicMaterial({
+color:0x00ff66,
+transparent:true,
+opacity:0.06
+});
+const glow=new THREE.Mesh(glowGeometry,glowMaterial);
+scene.add(glow);
+
+/* Lights */
+const ambientLight=new THREE.AmbientLight(0x88ffbb,0.55);
+scene.add(ambientLight);
+
+const directionalLight=new THREE.DirectionalLight(0xffffff,1.1);
+directionalLight.position.set(8,3,10);
+scene.add(directionalLight);
+
+const greenLight=new THREE.PointLight(0x00ff66,0.8,50);
+greenLight.position.set(-10,-5,8);
+scene.add(greenLight);
+
+/* Cyber points */
+const pointCount=160;
+const pointPositions=[];
+for(let i=0;i<pointCount;i++){
+const phi=Math.acos((Math.random()*2)-1);
+const theta=Math.random()*Math.PI*2;
+const radius=5.6 + Math.random()*0.35;
+
+const x=radius*Math.sin(phi)*Math.cos(theta);
+const y=radius*Math.cos(phi);
+const z=radius*Math.sin(phi)*Math.sin(theta);
+
+pointPositions.push(x,y,z);
+}
+
+const pointGeometry=new THREE.BufferGeometry();
+pointGeometry.setAttribute(
+"position",
+new THREE.Float32BufferAttribute(pointPositions,3)
+);
+
+const pointMaterial=new THREE.PointsMaterial({
+color:0x00ff88,
+size:0.05,
+transparent:true,
+opacity:0.9
+});
+
+const cyberPoints=new THREE.Points(pointGeometry,pointMaterial);
+scene.add(cyberPoints);
+
+/* Cyber lines */
+const attackLines=[];
+function createAttackLine(){
+const startRadius=5.15;
+const endRadius=6.6;
+
+const phi1=Math.acos((Math.random()*2)-1);
+const theta1=Math.random()*Math.PI*2;
+const phi2=Math.acos((Math.random()*2)-1);
+const theta2=Math.random()*Math.PI*2;
+
+const start=new THREE.Vector3(
+startRadius*Math.sin(phi1)*Math.cos(theta1),
+startRadius*Math.cos(phi1),
+startRadius*Math.sin(phi1)*Math.sin(theta1)
+);
+
+const end=new THREE.Vector3(
+endRadius*Math.sin(phi2)*Math.cos(theta2),
+endRadius*Math.cos(phi2),
+endRadius*Math.sin(phi2)*Math.sin(theta2)
+);
+
+const mid=start.clone().add(end).multiplyScalar(0.5);
+mid.normalize().multiplyScalar(7.2);
+
+const curve=new THREE.QuadraticBezierCurve3(start,mid,end);
+const points=curve.getPoints(40);
+
+const geometry=new THREE.BufferGeometry().setFromPoints(points);
+const material=new THREE.LineBasicMaterial({
+color:0x00ff66,
+transparent:true,
+opacity:0
+});
+
+const line=new THREE.Line(geometry,material);
+scene.add(line);
+
+attackLines.push({
+line,
+material,
+life:Math.random()*200,
+speed:0.012 + Math.random()*0.02
+});
+}
+
+for(let i=0;i<18;i++){
+createAttackLine();
+}
+
+camera.position.z=10;
+
+function animateAttackLines(){
+for(let i=0;i<attackLines.length;i++){
+const item=attackLines[i];
+item.life+=item.speed;
+
+let opacity=0;
+if(item.life<1){
+opacity=item.life;
+}else if(item.life<2){
+opacity=1;
+}else if(item.life<3){
+opacity=3-item.life;
+}else{
+item.life=0;
+}
+
+item.material.opacity=opacity*0.7;
+}
+}
+
+function animate(){
+requestAnimationFrame(animate);
+
+earth.rotation.y+=0.0022;
+earth.rotation.x+=0.0002;
+clouds.rotation.y+=0.0029;
+glow.rotation.y+=0.0015;
+cyberPoints.rotation.y+=0.0018;
+cyberPoints.rotation.x+=0.0003;
+
+animateAttackLines();
+renderer.render(scene,camera);
+}
+animate();
+
+/* Terminal typing */
+const terminalLines = [
+"benjamin@cybersec:~$ whoami",
+"Benjamin Safi",
+"",
+"benjamin@cybersec:~$ role",
+"Cybersecurity Student | System Integration | Future Defender",
+"",
+"benjamin@cybersec:~$ mission --show",
+"Build knowledge. Protect systems. Support people.",
+"",
+"benjamin@cybersec:~$ vision",
+"Pens instead of weapons",
+"No one sleeps hungry",
+"A stronger Afghanistan through knowledge and technology",
+"",
+"benjamin@cybersec:~$ skills --list",
+"Linux, Networking, Python, Cloud, Security, Web",
+"",
+"benjamin@cybersec:~$ status",
+"Learning... Building... Preparing...",
+"",
+"benjamin@cybersec:~$ connect",
+"Instagram: @benjamin_safi._",
+"",
+"benjamin@cybersec:~$ _"
+];
+
+const terminal = document.getElementById("terminalText");
+let lineIndex = 0;
+let charIndex = 0;
+let displayed = "";
+
+function typeTerminal(){
+if(lineIndex < terminalLines.length){
+const currentLine = terminalLines[lineIndex];
+
+if(charIndex < currentLine.length){
+displayed += currentLine.charAt(charIndex);
+charIndex++;
+} else {
+displayed += "\n";
+lineIndex++;
+charIndex = 0;
+}
+
+terminal.innerHTML = displayed + '<span class="cursor"></span>';
+terminal.scrollTop = terminal.scrollHeight;
+setTimeout(typeTerminal, 45);
+} else {
+setTimeout(()=>{
+lineIndex = 0;
+charIndex = 0;
+displayed = "";
+typeTerminal();
+}, 2500);
+}
+}
+typeTerminal();
+
+window.addEventListener("resize",()=>{
+resizeMatrix();
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth,window.innerHeight);
+});
 </script>
 
 </body>
