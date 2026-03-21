@@ -253,6 +253,134 @@ min-height:220px;
 
 <h1>Benjamin Safi</h1>
 
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطرناک‌ترین انسان‌های جهان</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+background:#000;
+color:#00ff41;
+font-family:tahoma,sans-serif;
+text-align:center;
+overflow:hidden;
+}
+
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.container{
+position:relative;
+z-index:2;
+padding:60px 20px;
+}
+
+h1{
+font-size:36px;
+text-shadow:0 0 15px #00ff41;
+}
+
+p{
+font-size:22px;
+margin-top:30px;
+line-height:2;
+}
+
+.back{
+display:inline-block;
+margin-top:50px;
+padding:10px 20px;
+border:2px solid #00ff41;
+color:#00ff41;
+text-decoration:none;
+border-radius:8px;
+transition:0.3s;
+}
+
+.back:hover{
+background:#00ff41;
+color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+<h1>خطرناک‌ترین انسان‌های جهان چه کسانی هستند؟</h1>
+
+<p id="text"></p>
+
+<a href="index.html" class="back">⬅ برگشت</a>
+</div>
+
+<script>
+/* Matrix Effect */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="010101010101";
+const fontSize=16;
+const columns=canvas.width/fontSize;
+const drops=[];
+
+for(let i=0;i<columns;i++){drops[i]=1;}
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff41";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+const text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]++;
+}
+}
+setInterval(draw,33);
+
+/* Typing Effect */
+const message="خطرناک‌ترین انسان‌های جهان آدم‌های بی‌سواد هستند";
+let i=0;
+
+function type(){
+if(i < message.length){
+document.getElementById("text").innerHTML += message.charAt(i);
+i++;
+setTimeout(type,50);
+}
+}
+type();
+</script>
+
+</body>
+</html>
+
+ 
  
 
   
