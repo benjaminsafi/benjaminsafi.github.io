@@ -477,7 +477,7 @@ canvas.height=window.innerHeight;
 canvas.width=window.innerWidth;
 
 fontSize = window.innerWidth < 768 ? 24 : 18;
-columns = Math.floor(canvas.width / fontSize * 1.8));
+columns = Math.floor(canvas.width / fontSize);
 
 drops = [];
 for(let x=0; x<columns; x++){
@@ -487,10 +487,10 @@ drops[x] = Math.random() * canvas.height / fontSize;
 resizeMatrix();
 
 function drawMatrix(){
-ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.05)";
+ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.45)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle = "#39ff41";
+ctx.fillStyle = "#39ff6a";
 ctx.font = fontSize + "px monospace";
 ctx.shadowColor = "#00ff41";
 ctx.shadowBlur = window.innerWidth < 768 ? 12 : 5;
@@ -508,7 +508,7 @@ drops[i] += window.innerWidth < 768 ? 0.6 : 0.5;
 
 ctx.shadowBlur = 0;
 }
-setInterval(drawMatrix, window.innerWidth < 768 ? 40 : 60);
+setInterval(drawMatrix, window.innerWidth < 768 ? 40 : 35);
 
 /* Globe scene */
 const scene=new THREE.Scene();
