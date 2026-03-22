@@ -347,7 +347,22 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 }
 </script>
 
+<a onclick="toggleLife()" class="button" style="margin-right:10px;">
+قانون‌های زندگی
+</a>
 
+<div id="lifeContent" style="display:none; margin-top:20px;">
+<p>
+مظلوم‌ها همیشه بازنده‌اند
+</p>
+</div>
+
+<script>
+function toggleLife(){
+let el = document.getElementById("lifeContent");
+el.style.display = (el.style.display === "none") ? "block" : "none";
+}
+</script>
 
 
 
