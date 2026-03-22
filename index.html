@@ -487,7 +487,7 @@ drops[x] = Math.random() * canvas.height / fontSize;
 resizeMatrix();
 
 function drawMatrix(){
-ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.45)";
+ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.045)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
 ctx.fillStyle = "#39ff6a";
@@ -503,12 +503,13 @@ if(drops[i]*fontSize > canvas.height && Math.random() > (window.innerWidth < 768
 drops[i] = 0;
 }
 
-drops[i] += window.innerWidth < 768 ? 0.6 : 0.5;
+drops[i] += window.innerWidth < 768 ? 1.15 : 1;
 }
 
 ctx.shadowBlur = 0;
 }
-setInterval(drawMatrix, window.innerWidth < 768 ? 40 : 35);
+setInterval(drawMatrix, window.innerWidth < 768 ? 22 : 35);
+
 
 /* Globe scene */
 const scene=new THREE.Scene();
