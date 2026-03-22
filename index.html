@@ -45,7 +45,7 @@ width:100%;
 height:100%;
 z-index:1;
 pointer-events:none;
-opacity:0.55;
+opacity:0.45;
 }
 
 .overlay{
@@ -487,10 +487,10 @@ drops[x] = Math.random() * canvas.height / fontSize;
 resizeMatrix();
 
 function drawMatrix(){
-ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.045)";
+ctx.fillStyle = window.innerWidth < 768 ? "rgba(0,0,0,0.018)" : "rgba(0,0,0,0.01)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle = "#39ff6a";
+ctx.fillStyle = "#39ff41";
 ctx.font = fontSize + "px monospace";
 ctx.shadowColor = "#00ff41";
 ctx.shadowBlur = window.innerWidth < 768 ? 12 : 5;
