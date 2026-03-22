@@ -45,7 +45,7 @@ width:100%;
 height:100%;
 z-index:1;
 pointer-events:none;
-opacity:0.75;
+opacity:0.55;
 }
 
 .overlay{
@@ -503,7 +503,7 @@ if(drops[i]*fontSize > canvas.height && Math.random() > (window.innerWidth < 768
 drops[i] = 0;
 }
 
-drops[i] += window.innerWidth < 768 ? 0.4 : 0.3;
+drops[i] += window.innerWidth < 768 ? 0.6 : 0.5;
 }
 
 ctx.shadowBlur = 0;
