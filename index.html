@@ -258,6 +258,24 @@ min-height:220px;
 Instagram : @benjamin_safi._
 </a>
 
+<a onclick="toggleWomen()" class="button" style="margin-right:10px;">
+درباره حق و حقوق زن
+</a>
+
+<div id="womenContent" style="display:none; margin-top:20px;">
+<p>
+  این صفحه در حال کار کردن میباشد
+</p>
+</div>
+
+<script>
+function toggleWomen(){
+let el = document.getElementById("womenContent");
+el.style.display = (el.style.display === "none") ? "block" : "none";
+}
+</script>
+  
+
 <a onclick="toggleBigText()" class="button" style="margin-right:10px;">
 درباره وطن
 </a>
@@ -383,6 +401,8 @@ let el = document.getElementById("lifeContent");
 el.style.display = (el.style.display === "none") ? "block" : "none";
 }
 </script>
+
+  
 
 <a onclick="toggleSkills()" class="button" style="margin-right:10px;">
 مهارت‌ها
