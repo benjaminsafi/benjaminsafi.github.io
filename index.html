@@ -503,7 +503,7 @@ if(drops[i]*fontSize > canvas.height && Math.random() > (window.innerWidth < 768
 drops[i] = 0;
 }
 
-drops[i] += window.innerWidth < 768 ? 1.15 : 1;
+drops[i] += window.innerWidth < 768 ? 0.7 : 0.6;
 }
 
 ctx.shadowBlur = 0;
