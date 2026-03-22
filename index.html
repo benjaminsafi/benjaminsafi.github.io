@@ -384,10 +384,11 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 }
 </script>
 
+<a onclick="toggleSkills()" class="button" style="margin-right:10px;">
+مهارت‌ها
+</a>
 
-
- 
-<h2>مهارت‌ها</h2>
+<div id="skillsContent" style="display:none; margin-top:20px;">
 
 <div class="skills">
 <span>Cybersecurity</span>
@@ -404,6 +405,17 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 <span>System Administration</span>
 <span>Information Security</span>
 </div>
+
+</div>
+
+<script>
+function toggleSkills(){
+let el = document.getElementById("skillsContent");
+el.style.display = (el.style.display === "none") ? "block" : "none";
+}
+</script>
+
+ 
 
 <h2>تماس</h2>
 
