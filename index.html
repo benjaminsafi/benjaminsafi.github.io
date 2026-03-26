@@ -1099,7 +1099,11 @@ animation: glow 1.5s infinite alternate;
 </style>
    
 <script>
+window.addEventListener("load", function(){
+if(typeof toggleCyberMode === "function"){
 toggleCyberMode();
+}
+});
 </script>
 
    
