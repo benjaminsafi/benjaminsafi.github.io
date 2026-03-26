@@ -356,15 +356,15 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 
 <div id="clockBox" style="
 display:inline-block;
-font-size:30px;
+font-size:28px;
 font-family:monospace;
 color:#00ff41;
 border:1px solid #00ff41;
-padding:15px 35px;
+padding:15px 30px;
 border-radius:12px;
 background:rgba(0,0,0,0.4);
 box-shadow:0 0 20px #00ff41;
-transition: all 0.5s;
+animation: glow 1.5s infinite alternate;
 ">
 
 <div id="clock"></div>
@@ -374,24 +374,23 @@ transition: all 0.5s;
 
 </div>
 
-<script>
-let showColon = true;
-let hue = 120;
+<style>
+@keyframes glow {
+0% { box-shadow: 0 0 10px #00ff41; }
+100% { box-shadow: 0 0 30px #00ff41; }
+}
+</style>
 
+<script>
 setInterval(()=>{
 let now = new Date();
-
-// چشمک زدن :
-let separator = showColon ? ":" : " ";
-showColon = !showColon;
 
 // ساعت
 let h = String(now.getHours()).padStart(2,'0');
 let m = String(now.getMinutes()).padStart(2,'0');
 let s = String(now.getSeconds()).padStart(2,'0');
 
-document.getElementById("clock").innerHTML =
-h + separator + m + separator + s;
+document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
 
 // تاریخ آلمانی
 document.getElementById("date").innerHTML =
@@ -401,11 +400,6 @@ day: 'numeric',
 month: 'long',
 year: 'numeric'
 });
-
-// تغییر رنگ آرام
-hue = (hue + 1) % 360;
-document.getElementById("clockBox").style.boxShadow =
-"0 0 25px hsl(" + hue + ", 100%, 50%)";
 
 },1000);
 </script>
