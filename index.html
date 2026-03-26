@@ -1098,28 +1098,5 @@ animation: glow 1.5s infinite alternate;
 }
 </style>
 
-<script>
-setInterval(()=>{
-let now = new Date();
-
-// ساعت
-let h = String(now.getHours()).padStart(2,'0');
-let m = String(now.getMinutes()).padStart(2,'0');
-let s = String(now.getSeconds()).padStart(2,'0');
-
-document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
-
-// تاریخ آلمانی
-document.getElementById("date").innerHTML =
-now.toLocaleDateString('de-DE', {
-weekday: 'long',
-day: 'numeric',
-month: 'long',
-year: 'numeric'
-});
-
-},1000);
-</script>
-
 </body>
 </html>
