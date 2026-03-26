@@ -351,9 +351,8 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 }
 </script>
 
-
    
-   <div style="text-align:center; margin-top:20px;">
+<div style="text-align:center; margin-top:20px;">
 
 <div id="clockBox" style="
 display:inline-block;
@@ -386,19 +385,25 @@ animation: glow 1.5s infinite alternate;
 setInterval(()=>{
 let now = new Date();
 
-// ساعت با فرمت حرفه‌ای
+// ساعت
 let h = String(now.getHours()).padStart(2,'0');
 let m = String(now.getMinutes()).padStart(2,'0');
 let s = String(now.getSeconds()).padStart(2,'0');
 
 document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
 
-// تاریخ
-document.getElementById("date").innerHTML = now.toDateString();
+// تاریخ آلمانی
+document.getElementById("date").innerHTML =
+now.toLocaleDateString('de-DE', {
+weekday: 'long',
+day: 'numeric',
+month: 'long',
+year: 'numeric'
+});
 
 },1000);
 </script>
-
+   
 
    
 <a id="scrollBtn" onclick="scrollTopPage()" class="button" style="display:none; position:fixed; bottom:20px; right:20px;">
