@@ -314,6 +314,57 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 Instagram : @benjamin_safi._
 </a>
 
+<a onclick="openHacker()" class="button" style="margin-right:10px;">
+Hack Screen
+</a>
+
+<div id="hackerScreen" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+color:#00ff41;
+z-index:9999;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+font-family:monospace;
+">
+
+<h1>ACCESS GRANTED</h1>
+<p>Welcome Benjamin Safi 😎</p>
+
+<a onclick="closeHacker()" class="button" style="margin-top:20px;">
+Close
+</a>
+
+</div>
+
+<script>
+function openHacker(){
+let el = document.getElementById("hackerScreen");
+el.style.display = "flex";
+}
+
+function closeHacker(){
+let el = document.getElementById("hackerScreen");
+el.style.display = "none";
+}
+</script>
+
+   
+<div id="clock" style="margin-top:20px;"></div>
+
+<script>
+setInterval(()=>{
+let now = new Date();
+document.getElementById("clock").innerHTML = now.toLocaleTimeString();
+},1000);
+</script>
+   
 <a onclick="playClick()" class="button" style="margin-right:10px;">
 Test
 </a>
