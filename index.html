@@ -343,18 +343,6 @@ Close
 
 </div>
 
-<script>
-function openHacker(){
-let el = document.getElementById("hackerScreen");
-el.style.display = "flex";
-}
-
-function closeHacker(){
-let el = document.getElementById("hackerScreen");
-el.style.display = "none";
-}
-</script>
-
    
 <div id="clock" style="margin-top:20px;"></div>
 
@@ -366,12 +354,15 @@ document.getElementById("clock").innerHTML = now.toLocaleTimeString();
 </script>
    
 <a onclick="playClick()" class="button" style="margin-right:10px;">
-Test
+Click Sound
 </a>
 
 <script>
+let clickSound = new Audio("https://www.soundjay.com/button/sounds/button-16.mp3");
+
 function playClick(){
-new Audio("https://www.soundjay.com/button/sounds/button-16.mp3").play();
+clickSound.currentTime = 0;
+clickSound.play().catch(()=>{});
 }
 </script>
 
