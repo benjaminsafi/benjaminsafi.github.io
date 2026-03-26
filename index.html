@@ -314,6 +314,29 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 Instagram : @benjamin_safi._
 </a>
 
+<a onclick="toggleGlitch()" class="button" style="margin-right:10px;">
+Glitch Mode
+</a>
+
+<style>
+.glitch {
+animation: glitch 0.2s infinite;
+}
+
+@keyframes glitch {
+0% { transform: translate(1px, -1px); }
+50% { transform: translate(-1px, 1px); }
+100% { transform: translate(1px, 1px); }
+}
+</style>
+
+<script>
+function toggleGlitch(){
+document.body.classList.toggle("glitch");
+}
+</script>
+
+   
 <a onclick="toggleCyber()" class="button" style="margin-right:10px;">
 Cyber Mode
 </a>
