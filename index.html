@@ -314,6 +314,37 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 Instagram : @benjamin_safi._
 </a>
 
+<a onclick="playClick()" class="button" style="margin-right:10px;">
+Test
+</a>
+
+<script>
+function playClick(){
+new Audio("https://www.soundjay.com/button/sounds/button-16.mp3").play();
+}
+</script>
+
+   
+<a id="scrollBtn" onclick="scrollTopPage()" class="button" style="display:none; position:fixed; bottom:20px; right:20px;">
+⬆
+</a>
+
+<script>
+window.onscroll = function(){
+let btn = document.getElementById("scrollBtn");
+if(document.documentElement.scrollTop > 200){
+btn.style.display = "block";
+}else{
+btn.style.display = "none";
+}
+};
+
+function scrollTopPage(){
+window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+
+   
 <a onclick="toggleGlitch()" class="button" style="margin-right:10px;">
 Glitch Mode
 </a>
