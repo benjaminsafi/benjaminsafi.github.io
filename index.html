@@ -253,6 +253,60 @@ min-height:220px;
 
 <h1>Benjamin Safi</h1> 
 
+<div style="text-align:center; margin-top:20px;">
+
+<div id="clockBox" style="
+display:inline-block;
+font-size:28px;
+font-family:monospace;
+color:#00ff41;
+border:1px solid #00ff41;
+padding:15px 30px;
+border-radius:12px;
+background:rgba(0,0,0,0.4);
+box-shadow:0 0 20px #00ff41;
+animation: glow 1.5s infinite alternate;
+">
+
+<div id="clock"></div>
+<div id="date" style="font-size:14px; margin-top:5px;"></div>
+
+</div>
+
+</div>
+
+<style>
+@keyframes glow {
+0% { box-shadow: 0 0 10px #00ff41; }
+100% { box-shadow: 0 0 30px #00ff41; }
+}
+</style>
+
+<script>
+setInterval(()=>{
+let now = new Date();
+
+// ساعت
+let h = String(now.getHours()).padStart(2,'0');
+let m = String(now.getMinutes()).padStart(2,'0');
+let s = String(now.getSeconds()).padStart(2,'0');
+
+document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
+
+// تاریخ آلمانی
+document.getElementById("date").innerHTML =
+now.toLocaleDateString('de-DE', {
+weekday: 'long',
+day: 'numeric',
+month: 'long',
+year: 'numeric'
+});
+
+},1000);
+</script>
+
+
+   
 <a onclick="toggleWomen()" class="button" style="margin-right:10px;">
 درباره من
 </a>
@@ -350,60 +404,6 @@ let el = document.getElementById("skillsBar");
 el.style.display = (el.style.display === "none") ? "block" : "none";
 }
 </script>
-
-   
-<div style="text-align:center; margin-top:20px;">
-
-<div id="clockBox" style="
-display:inline-block;
-font-size:28px;
-font-family:monospace;
-color:#00ff41;
-border:1px solid #00ff41;
-padding:15px 30px;
-border-radius:12px;
-background:rgba(0,0,0,0.4);
-box-shadow:0 0 20px #00ff41;
-animation: glow 1.5s infinite alternate;
-">
-
-<div id="clock"></div>
-<div id="date" style="font-size:14px; margin-top:5px;"></div>
-
-</div>
-
-</div>
-
-<style>
-@keyframes glow {
-0% { box-shadow: 0 0 10px #00ff41; }
-100% { box-shadow: 0 0 30px #00ff41; }
-}
-</style>
-
-<script>
-setInterval(()=>{
-let now = new Date();
-
-// ساعت
-let h = String(now.getHours()).padStart(2,'0');
-let m = String(now.getMinutes()).padStart(2,'0');
-let s = String(now.getSeconds()).padStart(2,'0');
-
-document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
-
-// تاریخ آلمانی
-document.getElementById("date").innerHTML =
-now.toLocaleDateString('de-DE', {
-weekday: 'long',
-day: 'numeric',
-month: 'long',
-year: 'numeric'
-});
-
-},1000);
-</script>
-   
 
    
 <a id="scrollBtn" onclick="scrollTopPage()" class="button" style="display:none; position:fixed; bottom:20px; right:20px;">
