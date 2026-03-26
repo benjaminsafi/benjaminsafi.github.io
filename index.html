@@ -45,7 +45,7 @@ width:100%;
 height:100%;
 z-index:1;
 pointer-events:none;
-opacity:0.48;
+opacity:0.50;
 }
 
 .overlay{
@@ -344,15 +344,38 @@ el.style.display = (el.style.display === "none") ? "block" : "none";
 }
 </script>
 
-   
-<div id="clock" style="margin-top:20px;"></div>
+   <div id="clockBox" style="
+margin-top:20px;
+font-size:22px;
+font-family:monospace;
+color:#00ff41;
+text-shadow:0 0 10px #00ff41, 0 0 20px #00ff41;
+border:1px solid #00ff41;
+display:inline-block;
+padding:10px 20px;
+border-radius:10px;
+">
+
+<div id="clock"></div>
+<div id="date" style="font-size:14px; margin-top:5px;"></div>
+
+</div>
 
 <script>
 setInterval(()=>{
 let now = new Date();
-document.getElementById("clock").innerHTML = now.toLocaleTimeString();
+
+// ساعت
+let time = now.toLocaleTimeString();
+document.getElementById("clock").innerHTML = time;
+
+// تاریخ
+let date = now.toDateString();
+document.getElementById("date").innerHTML = date;
+
 },1000);
 </script>
+
 
    
 <a id="scrollBtn" onclick="scrollTopPage()" class="button" style="display:none; position:fixed; bottom:20px; right:20px;">
