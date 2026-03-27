@@ -236,37 +236,6 @@ min-height:220px;
 }
 </style>
 
-
-
-   <style>
-
-#google_translate_element {
-position: absolute;
-top: 20px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 9999;
-}
-
-.goog-te-gadget select {
-background: black;
-color: #00ff41;
-border: 1px solid #00ff41;
-padding: 5px;
-border-radius: 5px;
-}
-
-.goog-te-banner-frame.skiptranslate {
-display: none !important;
-}
-
-body {
-top: 0px !important;
-}
-
-</style>
-
- <meta name="google" content="notranslate">
 </head>
 
 <body>
@@ -1148,27 +1117,6 @@ drops[i]++;
 
 setInterval(draw, 33);
 </script>
-
-<script>
-function googleTranslateElementInit() {
-new google.translate.TranslateElement({
-pageLanguage: 'fa'
-}, 'google_translate_element');
-}
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
-   
-<script>
-setInterval(function(){
-let frame = document.querySelector('.goog-te-banner-frame');
-if(frame){
-frame.style.display = 'none';
-}
-}, 500);
-</script>
-   
+ 
 </body>
 </html>
