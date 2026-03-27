@@ -235,6 +235,17 @@ min-height:220px;
 }
 }
 </style>
+
+<style>
+.goog-te-banner-frame.skiptranslate {
+display: none !important;
+}
+
+body {
+top: 0px !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -377,38 +388,6 @@ Instagram : @benjamin_safi._
 </a>
 
 
-   
-<a onclick="toggleSkillsBar()" class="button" style="margin-right:10px;">
-Skills Pro
-</a>
-
-<div id="skillsBar" style="display:none; margin-top:20px;">
-
-<p>Cybersecurity</p>
-<div style="background:#222; width:100%; height:10px;">
-<div style="background:#00ff41; width:70%; height:10px;"></div>
-</div>
-
-<p>Python</p>
-<div style="background:#222; width:100%; height:10px;">
-<div style="background:#00ff41; width:60%; height:10px;"></div>
-</div>
-
-<p>Networking</p>
-<div style="background:#222; width:100%; height:10px;">
-<div style="background:#00ff41; width:65%; height:10px;"></div>
-</div>
-
-</div>
-
-<script>
-function toggleSkillsBar(){
-let el = document.getElementById("skillsBar");
-el.style.display = (el.style.display === "none") ? "block" : "none";
-}
-</script>
-
-   
 <a id="scrollBtn" onclick="scrollTopPage()" class="button" style="display:none; position:fixed; bottom:20px; right:20px;">
 ⬆
 </a>
