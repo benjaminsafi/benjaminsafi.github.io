@@ -38,7 +38,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 32px;display:fl
 .divider{position:relative;z-index:10;height:1px;margin:0 32px;background:linear-gradient(90deg,transparent,rgba(0,255,65,0.2),transparent);}
 
 .content-area{position:relative;z-index:10;max-width:960px;margin:0 auto;padding:40px 32px;}
-.content-block{display:none;border:1px solid rgba(0,255,65,0.15);background:rgba(0,255,65,0.02);margin-bottom:4px;padding:28px;font-size:14px;line-height:2;opacity:0.9;}
+.content-block{display:none;border:1px solid rgba(0,255,65,0.4);background:rgba(0,0,0,0.85);margin-bottom:4px;padding:28px;font-size:16px;line-height:2;color:#e0ffe0;backdrop-filter:blur(4px);}
 .content-block p{margin-bottom:14px;}
 .content-block strong{color:var(--g);}
 
@@ -213,7 +213,7 @@ window.onload = function() {
       if (drops[i] * FS > mc.height && Math.random() > 0.975) drops[i] = 0;
       drops[i]++;
     }
-    setTimeout(function(){ requestAnimationFrame(drawMatrix); }, 60);
+    setTimeout(function(){ requestAnimationFrame(drawMatrix); }, 120);
   }
   drawMatrix();
 
